@@ -15,6 +15,27 @@ a {
   box-sizing: border-box;
 }
 
+.header-height {
+  height: 80px !important;
+  z-index: 3;
+}
+
+.header-offset {
+  top: 80px !important;
+}
+
+.dropdown-menu {
+  z-index: 2 !important;
+}
+
+.offcanvas-backdrop, .offcanvas-end {
+  z-index: 1 !important;
+}
+
+.not-arrow .dropdown-toggle::after {
+  display: none !important; 
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
