@@ -24,6 +24,15 @@ a {
   top: 80px !important;
 }
 
+.bottom-tab-height {
+  height: 50px !important;
+  z-index: 3;
+}
+
+.bottom-tab-offset {
+  top: 50px !important;
+}
+
 .dropdown-menu {
   z-index: 2 !important;
 }

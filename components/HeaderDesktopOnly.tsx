@@ -34,7 +34,7 @@ function HeaderDesktopOnly(props: any) {
 
 
   return (
-    <Navbar sticky='top' bg='white' className='border-bottom d-none d-md-block align-items-center header-height' collapseOnSelect expand="md">
+    <Navbar sticky='top' bg='white' className='border-bottom d-none d-lg-block align-items-center header-height' collapseOnSelect expand="md">
       <Container>
         
         <Link href='/'>
@@ -45,10 +45,21 @@ function HeaderDesktopOnly(props: any) {
 
           <Nav className="">
 
-            <Nav.Link className='' onClick={props?.onOpenModal}>
-              <span>Próximo de Jardim Maria Eneida</span>
-              <MdExpandMore />
-            </Nav.Link>
+            <Link href={router.query?.['andress'] ? router.pathname : `/?andress=${'andress'}`}
+              as={router.query?.['andress'] ? router.pathname : `/andress`}
+            >
+              <Nav.Link 
+                disabled={router.pathname === '/andress'} 
+                href={router.query?.['andress'] ? router.pathname : `/andress`}  
+                active={router.pathname === '/andress'}
+                // onClick={props?.onOpenModal}
+              >
+                <span>Próximo de Jardim Maria Eneida</span>
+                <MdExpandMore />
+              </Nav.Link>
+            </Link>
+  
+
 {/* 
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

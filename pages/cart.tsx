@@ -15,7 +15,7 @@ const Cart: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h2>Carrinho</h2>
+      <h2 className='my-5'>Carrinho</h2>
     </div>
   )
 }
