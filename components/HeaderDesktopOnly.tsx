@@ -35,7 +35,7 @@ function HeaderDesktopOnly(props: any) {
 
   return (
     <Navbar sticky='top' bg='white' className='border-bottom d-none d-lg-block align-items-center header-height' collapseOnSelect expand="md">
-      <Container>
+      <Container className='h-100'>
         
         <Link href='/'>
           <Navbar.Brand href='/'>
