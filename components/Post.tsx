@@ -7,14 +7,14 @@ const Post: React.FC = () => {
       <div className="card-header border-sm-0">
         <div className="row">
 
-          <div className="col-4">
+          <div className="col">
             <div className="d-flex h-100 flex-row align-items-center">
               <div  className="bg-dark rounded-circle" style={{ height: 32, width: 32 }} />
               <h6 className="card-title ms-2 mb-0">Card title</h6>
             </div>
           </div>
 
-          <div className="col-8">
+          <div className="col">
             <div className="d-flex h-100 flex-row align-items-center justify-content-end">
               <button  className="btn btn-primary me-2">Favorite</button>
               <button type="button" className="btn btn-transparent border-0 rounded-circle">
