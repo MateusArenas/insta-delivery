@@ -16,7 +16,7 @@ const Post: React.FC = () => {
 
           <div className="col-8">
             <div className="d-flex h-100 flex-row align-items-center justify-content-end">
-              <a href="#" className="btn btn-primary me-2">Favorite</a>
+              <button  className="btn btn-primary me-2">Favorite</button>
               <button type="button" className="btn btn-transparent border-0 rounded-circle">
                 <MdMoreHoriz size={24} />
               </button>
