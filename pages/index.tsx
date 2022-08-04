@@ -21,9 +21,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <div className="row">
+        <div className="row p-0 m-0">
 
-          <div className="col-12 col-lg-6 mt-4">
+          <div className="col-12 col-lg-6 p-0 px-md-4 mx-md-2 mt-4">
             <Post />
             <Post />
             <Post />

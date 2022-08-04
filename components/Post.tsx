@@ -3,7 +3,7 @@ import { MdMoreHoriz } from 'react-icons/md';
 
 const Post: React.FC = () => {
   return (
-    <div className="card">
+    <div className="card mb-md-4">
       <div className="card-header border-sm-0">
         <div className="row">
 
