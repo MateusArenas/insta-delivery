@@ -1,7 +1,11 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { MdMoreHoriz } from 'react-icons/md';
+import { Dropdown } from 'react-bootstrap'
 
 const Post: React.FC = () => {
+  const router = useRouter()
   return (
     <div className="card mb-md-4">
       <div className="card-header border-sm-0">
@@ -17,9 +21,27 @@ const Post: React.FC = () => {
           <div className="col">
             <div className="d-flex h-100 flex-row align-items-center justify-content-end">
               <button  className="btn btn-primary me-2">Favorite</button>
-              <button type="button" className="btn btn-transparent border-0 rounded-circle">
+              <Dropdown className='not-arrow'>
+                <Dropdown.Toggle variant="dakr" id="dropdown-basic" className='btn btn-transparent border-0 rounded-circle'>
+                  <MdMoreHoriz size={24} />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu >
+                  <Dropdown.Item className=' text-danger' href="#/action-3"><strong>Denunciar</strong></Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item className=' text-danger' href="#/action-2"><strong>Desfavoritar</strong></Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Link passHref href={`/post/${'abc1234'}`}>
+                    <Dropdown.Item>Ir para publicação</Dropdown.Item>
+                  </Link>
+
+                  <Dropdown.Divider />
+                  <Dropdown.Item href="#/action-1">Copiar link</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              {/* <button type="button" className="btn btn-transparent border-0 rounded-circle">
                 <MdMoreHoriz size={24} />
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -29,9 +51,14 @@ const Post: React.FC = () => {
       <div className="position-relative ">
         <div  className="card-img-center  bg-dark w-100" style={{ height: 300 }} />
 
-        <button className="btn btn-transparent position-absolute top-50 start-50 translate-middle p-2 bg-white border border-light rounded-circle">
-          <span className="visually-hidden">New alerts</span>
-        </button>
+        <Link passHref shallow
+          href={router.query?.['productId'] ? router.pathname : `/?productId=${'abc1234'}`}
+          as={router.query?.['productId'] ? router.pathname : `/product/${'abc1234'}`}
+        >
+          <a className="btn btn-transparent position-absolute top-50 start-50 translate-middle p-2 bg-white border border-light rounded-circle">
+            <span className="visually-hidden">New alerts</span>
+          </a>
+        </Link>
         
         {/* <div className="card-img-overlay text-white">
           <h5 className="card-title">Card title</h5>

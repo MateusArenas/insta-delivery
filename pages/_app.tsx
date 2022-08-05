@@ -15,6 +15,8 @@ import { useRouter } from 'next/router';
 import Andress from './andress';
 
 import BottomTabNavigator from '../components/BottomTabNavigator';
+import Product from './product/[id]';
+import Post from './post/[id]';
 
 
 type NextPageWithLayout = NextPage & { getLayout?: (page: ReactElement) => ReactNode }
@@ -40,9 +42,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
       {getLayout(<Component {...pageProps} />)}
 
+      {/* modal for andress */}
       <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered 
         show={router.query.andress as unknown as boolean}
-        onHide={() => router.push(router.pathname)}
+        onHide={() => router.push(router.pathname, undefined, { shallow: true })}
       >
         <Modal.Header className='border-0' closeButton />
         <Modal.Body>
@@ -50,9 +53,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         </Modal.Body>
       </Modal>
 
+      {/* offcanvas for cart */}
       <Offcanvas tabindex placement={'end'} className='header-offset' backdropClassName='header-offset' 
         show={router.query.cart as unknown as boolean} 
-        onHide={() => router.push(router.pathname)}
+        onHide={() => router.push(router.pathname, undefined, { shallow: true })}
       >
         <div className='d-flex flex-row'>
           <Offcanvas.Header className='border-0 mb-4 position-absolute'  closeButton />
@@ -62,6 +66,35 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           </div>
         </div>
       </Offcanvas>
+
+      {/* offcanvas for product */}
+      <Offcanvas tabindex placement={'bottom'} 
+        show={router.query.productId as unknown as boolean} 
+        onHide={() => router.push(router.pathname, undefined, { shallow: true })}
+      >
+        <div className='d-flex flex-row'>
+          <Offcanvas.Header className='border-0 mb-4 position-absolute end-0' closeButton />
+
+          <div className="d-flex flex-column mx-4">
+            <Product />
+          </div>
+        </div>
+      </Offcanvas>
+
+      {/* offcanvas for post */}
+      <Offcanvas tabindex placement={'bottom'} 
+        show={router.query.postId as unknown as boolean} 
+        onHide={() => router.push(router.pathname, undefined, { shallow: true })}
+      >
+        <div className='d-flex flex-row'>
+          <Offcanvas.Header className='border-0 mb-4 position-absolute end-0' closeButton />
+
+          <div className="d-flex flex-column mx-4">
+            <Post />
+          </div>
+        </div>
+      </Offcanvas>
+
     </>
   )
 }
