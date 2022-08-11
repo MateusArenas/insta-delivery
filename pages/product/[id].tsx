@@ -43,7 +43,7 @@ const router = useRouter()
 
         <div className="row g-0 g-lg-3 my-0 mx-0 mb-lg-4 mt-lg-4">
             <div className="col-12 px-0 col-lg-6 px-lg-3">
-              <div className="bg-dark rounded w-100" style={{ height: 573/2 }} />
+              <div className="bg-dark rounded-0 rounded-lg w-100" style={{ height: 573/2 }} />
             </div>
             <div className="col-12 col-lg-6 mt-3 mt-lg-0">
               <h3 className="px-3 px-lg-0 " >Hamburger</h3>
