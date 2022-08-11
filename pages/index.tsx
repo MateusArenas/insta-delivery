@@ -14,7 +14,6 @@ import api from '../services/api'
 
 const Home: NextPage = () => {
 
-  const { bag, saveInBag, removeInBag, updateInBag } = React.useContext(BagContext)
 
   React.useEffect(() => {
     api.get('/fruit/all').then(response => {
