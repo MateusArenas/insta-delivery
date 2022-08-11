@@ -50,7 +50,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
             {!value && <Dropdown.Header>{'Buscas recentes'}</Dropdown.Header>}
             {!!debounce && !!value && <Dropdown.Header>{'Você procura por'}</Dropdown.Header>}
             {(!!debounce && !!value) && suggestions?.map(textEnter => 
-                <Dropdown.Item as='button' key={textEnter} onClick={() => onChangeText(textEnter)} type='submit' variant="link" className="dropdown-item py-2 px-3 text-decoration-none border-0 text-dark">
+                <Dropdown.Item as={Button} key={textEnter} onClick={() => onChangeText(textEnter)} type='submit' variant="link" className="dropdown-item py-2 px-3 text-decoration-none border-0 text-dark">
                   <div className="d-flex flex=row align-items-center justify-content-between">
                     <span className='me-5'>{textEnter}</span>
                     <MdStore />
@@ -58,13 +58,14 @@ const SearchInput: React.FC<SearchInputProps> = ({
                 </Dropdown.Item>
             )}
             {(!debounce) && history?.map(textEnter => 
-                <Dropdown.Item as='button' key={textEnter} onClick={() => onChangeText(textEnter)} type='submit' variant="link" className="dropdown-item py-2 px-3 text-decoration-none border-0 text-dark">
+                <Dropdown.Item as={Button} key={textEnter} onClick={() => onChangeText(textEnter)} type='submit' variant="link" className="dropdown-item py-2 px-3 text-decoration-none border-0 text-dark">
                   <MdHistory className='me-2' />
                   <span className='me-5'>{textEnter}</span>
                 </Dropdown.Item>
             )}
           </Dropdown.Menu>
 
+          <button></button>
       </Dropdown>
     </Form>
   )
