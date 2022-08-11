@@ -6,70 +6,41 @@ interface IProduct {
   id?: string
   price: number
   name: string
+  quantity: number
 }
 
 interface BagContextData {
   bag: IProduct[]
-  saveInBag: (product: IProduct) => void
-  updateInBag: (id: string, product: IProduct) => void
-  removeInBag: (id: string) => void
+  setBagItem: (product: IProduct, quantity: number) => void
+  findBagItem: (product: IProduct) => IProduct | undefined
 }
 
 const BagContext = React.createContext<BagContextData>({} as BagContextData)
 
-const getId = (item: IProduct) => item?._id || item?.id
+export const getId = (item: IProduct) => item?._id || item?.id
 
 export const BagProvider: React.FC<any> = ({ children }) => {
   const [bag, setBag] = usePersistedState<IProduct[]>('alan-bag', [])
 
-  function saveInBag(product: IProduct) {
-    setBag(items => [...items, product])
-  }
+  const findBagItem = (product: IProduct) => bag.find(item => getId(item) === getId(product))
 
-  function updateInBag(id: string, update: Partial<IProduct>) {
-    setBag(items => items.map(item => getId(item) === id ? { ...item, ...update } : item))
-  }
-
-  function removeInBag(id: string) {
-    setBag(items => items.filter(item => getId(item) !== id))
-  }
-
-  function setBagItem(product: IProduct, quantity: number) {
-    // setBag(items => items.map(item => {
-    //   if (getId(item) === getId(product)) { //exists
-    //     return ({ ...item, ...product, quantity })
-    //     if (quantity) {
-    //     } else {
-
-    //     }
-
-    //   } else { //not exists
-
-    //   }
-    // }).filter(item => quantity ? true : (getId(item) === getId(product)) )
-    // )
-    setBag(items => {
-      const findItem = items.find(item => getId(item) === getId(product))
-
-      if (findItem) {
-        if (quantity) {
-
-        } else {
-          
-        }
-      } else {
-        return [...items, { ...product, quantity }]
+  const setBagItem = (product: IProduct, quantity: number) => setBag(items => {
+    if (items.find(item => getId(item) === getId(product))) {
+      if (quantity >= 1) {
+        return items.map(item => getId(item) === getId(product) ? { ...item, ...product, quantity } : item )
+      } else {  
+        return items.filter(item => getId(item) !== getId(product))
       }
-
-    })
-  }
+    } else {
+      return [...items, { ...product, quantity }]
+    }
+  })
 
   return (
     <BagContext.Provider value={{ 
       bag,
-      saveInBag,
-      updateInBag,
-      removeInBag
+      findBagItem,
+      setBagItem
     }} >
       {children}
     </BagContext.Provider>

@@ -72,17 +72,14 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       </Modal>
 
       {/* offcanvas for product */}
-      <Offcanvas tabinde placement={'bottom'} className="open-bellow" backdropClassName='open-bellow-bg'
+      <Offcanvas tabinde placement={'bottom'} className="offcanvas-height-adapter open-bellow" backdropClassName='open-bellow-bg'
         show={router.query.productId as unknown as boolean} 
         onHide={() => router.back()}
       >
-        <div className='d-flex flex-row'>
-          <Offcanvas.Header className='border-0 mb-4 position-absolute end-0' closeButton />
-
-          <div className="d-flex flex-column mx-4">
-            <Product />
-          </div>
-        </div>
+        {/* <Offcanvas.Header className='border-0 mb-4 position-absolute end-0' closeButton /> */}
+        <Offcanvas.Body className='p-0'>
+          <Product />
+        </Offcanvas.Body>
       </Offcanvas>
 
       {/* offcanvas for post */}

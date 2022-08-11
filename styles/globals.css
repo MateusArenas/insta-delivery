@@ -49,6 +49,25 @@ a {
   top: 50px !important;
 }
 
+.product-bar-position-adapter {
+  position: relative !important;
+}
+
+.offcanvas-height-adapter {
+  height: auto !important;
+}
+
+@media only screen and (max-width: 991px) {
+  .offcanvas-height-adapter {
+    height: 100% !important;
+  }
+  .product-bar-position-adapter {
+    position: absolute !important;
+    width: 100% !important;
+    bottom: 50px !important;
+  }
+}
+
 .dropdown-menu {
   z-index: 2 !important;
 }
