@@ -9,9 +9,19 @@ import { Offcanvas, CloseButton } from 'react-bootstrap';
 
 import React from 'react'
 import Post from '../components/Post'
+import BagContext from '../contexts/bag'
+import api from '../services/api'
 
 const Home: NextPage = () => {
 
+  const { bag, saveInBag, removeInBag, updateInBag } = React.useContext(BagContext)
+
+  React.useEffect(() => {
+    api.get('/fruit/all').then(response => {
+      console.log({ response });
+      
+    })
+  }, [])
 
   return (
     <div className="container g-0 g-md-3">

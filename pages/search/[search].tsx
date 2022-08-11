@@ -1,12 +1,15 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
 import React from 'react'
+import { useRouter } from 'next/router'
 
 const Search: NextPage = () => {
+
+  const router = useRouter()
 
   return (
     <div className={styles.container}>
@@ -16,7 +19,7 @@ const Search: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h4 className="text-center my-5" >Search</h4>
+      <h4 className="text-center my-5" >Search {router.query?.search}</h4>
 
     </div>
   )

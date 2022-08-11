@@ -1,12 +1,58 @@
-import React from 'react';
 import Link from 'next/link'
-import { Navbar, Nav } from 'react-bootstrap';
-
-import { MdAccountCircle, MdHome, MdSearch, MdShoppingCart } from 'react-icons/md';
 import { useRouter } from 'next/router';
+import React from 'react';
+import { Nav, Navbar } from 'react-bootstrap';
+import { MdAccountCircle, MdHome, MdSearch, MdShoppingCart } from 'react-icons/md';
+
+import useBreakpoint from '../hooks/useBreakpoint';
 
 const BottomTabNavigator: React.FC = () => {
   const router = useRouter()
+
+//   const breakpoint = useBreakpoint()
+
+//   const [lastOpen, setLastOpen] = React.useState({ pathname: '/', asPath: '/', query: {} });
+
+  
+// function removeParameterFromUrl(url: string, parameter: string) {
+//   return url
+//     .replace(new RegExp('[?&]' + parameter + '=[^&#]*(#.*)?$'), '$1')
+//     .replace(new RegExp('([?&])' + parameter + '=[^&]*&'), '$1');
+// }
+
+//   React.useEffect(() => {
+//     if (router.query?.open && breakpoint === 'md' || breakpoint === 'sm' || breakpoint === 'xs') {
+//       if (router.pathname !== '/cart') {
+//         (async () => {
+//           if (router.query.open === 'cart') {
+//             setLastOpen({ pathname: router.pathname, asPath: router.asPath, query: router.query })
+//             await router.replace(`/${router.query?.open}`, undefined, { shallow: true })
+//           } else if (router.query.open === 'andress') {
+//             setLastOpen({ pathname: router.pathname, asPath: router.asPath, query: router.query })
+//             await router.replace(`/${router.query?.open}`, undefined, { shallow: true })
+//           }
+//         })()
+//       }
+//     }
+//   }, [router, breakpoint])
+
+//   React.useEffect(() => {
+//     if (!router.query?.open && breakpoint === 'lg' || breakpoint === 'xl' || breakpoint === 'xxl') {
+//       (async () => {
+//           if (router.pathname === '/cart') {
+//             await router.replace(
+//               { pathname: lastOpen.pathname, query: { ...lastOpen.query, open: 'cart' } }, 
+//               removeParameterFromUrl(lastOpen.asPath, 'open')+'?open=cart', { shallow: true }
+//             )
+//           } else if (router.pathname === '/andress') {
+//             await router.replace(
+//               { pathname: lastOpen.pathname, query: { ...lastOpen.query, open: 'andress' } }, 
+//               removeParameterFromUrl(lastOpen.asPath, 'open')+'?open=andress', { shallow: true }
+//             )
+//           }
+//         })()
+//     }
+//   }, [router, breakpoint, lastOpen])
 
   return (
     <Navbar className='bottom-tab-height d-lg-none d-block border-top p-0' fixed="bottom" bg="light" variant="light">
@@ -49,5 +95,6 @@ const BottomTabNavigator: React.FC = () => {
     </Navbar>
   )
 }
+
 
 export default BottomTabNavigator;

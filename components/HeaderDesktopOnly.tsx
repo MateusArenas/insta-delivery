@@ -1,38 +1,57 @@
-import { Button, Container, Form, Nav, Navbar, NavDropdown, Dropdown, FormControlProps } from 'react-bootstrap';
+import Link from 'next/link'
+import { useRouter } from 'next/router';
+import React from 'react'
+import { Button, Container, Dropdown, Form, FormControlProps, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { IoBagOutline, IoEnterOutline } from 'react-icons/io5';
-import { MdExpandMore, MdPersonOutline, MdHelpOutline, MdChevronRight, MdOutlineAccountCircle, MdHistory } from 'react-icons/md';
+import { MdChevronRight, MdExpandMore, MdHelpOutline, MdHistory, MdOutlineAccountCircle, MdPersonOutline } from 'react-icons/md';
 import { RiSearchLine } from 'react-icons/ri';
 
-import { useRouter } from 'next/router';
+import Router from 'next/router'
 
-import Link from 'next/link'
-import React from 'react'
 import SearchInput from './SearchInput';
-
+import { useDebounceState, useDebounce } from '../hooks/useDebounce';
 
 function HeaderDesktopOnly(props: any) {
 
   const router = useRouter()
 
+  console.log({ router });
+
+  const [search, setSearch] = React.useState('')
+
+  const debounce = useDebounce(search, 1000)
 
   return (
     <Navbar sticky='top' bg='white' className='border-bottom d-none d-lg-block align-items-center header-height' collapseOnSelect expand="md">
       <Container className='h-100'>
         
-        <Link href='/'>
-          <Navbar.Brand href='/'>
+        <Link passHref href='/' replace >
+          <Navbar.Brand onClick={() => setSearch('')} >
             insta-delivery
           </Navbar.Brand>
         </Link> 
 
           <Nav className="">
 
-            <Link shallow href={router.query?.['andress'] ? router.pathname : `/?andress=${'andress'}`}
-              as={router.query?.['andress'] ? router.pathname : `/andress`}
+            <Link passHref 
+              // href={{
+              //   pathname: router.pathname,
+              //   // query: { ...router.query, open: router.query?.['open'] === 'andress' ? undefined : 'andress' },
+              //   query: router.query?.['open'] === 'andress' ? removeQuery(router.query, 'open') : { ...router.query, open: 'andress' } ,
+              // }}
+              // as={`${removeParameterFromUrl(router.asPath, 'open')}?open=andress`}
+              href={{
+                pathname: router.pathname,
+                query: router.query?.['open'] === 'andress' ? removeQuery(router.query, 'open') : { ...router.query, open: 'andress' },
+              }}
+              as={{ 
+                pathname: router.query?.['open'] ? removeParameterFromUrl(router.asPath, 'open') : router.asPath,
+                query: router.query?.['open'] === 'andress' ? {} : { open: 'andress' },
+              }}
+              replace
             >
               <Nav.Link 
                 disabled={router.pathname === '/andress'} 
-                href={router.query?.['andress'] ? router.pathname : `/andress`}  
                 active={router.pathname === '/andress'}
                 // onClick={props?.onOpenModal}
               >
@@ -58,7 +77,12 @@ function HeaderDesktopOnly(props: any) {
             
           </Nav>
 
-          <SearchInput />
+          <SearchInput value={search} onChangeText={setSearch}
+            handleSubmit={() => router.push(`/search/${search}`, undefined, { shallow: true })}
+            history={['oi', 'hamburger']}
+            debounce={debounce}
+            suggestions={['hamburger', 'habibgs']}
+          />
 
           <Nav>
             {/* <Nav.Link href="#deets" className='not-arrow mx-2'> */}
@@ -86,14 +110,20 @@ function HeaderDesktopOnly(props: any) {
             {/* </Nav.Link> */}
 
 
-            <Link shallow
-              href={router.query?.['cart'] ? router.pathname : `/?cart=${'cart'}`}
-              as={router.query?.['cart'] ? router.pathname : `/cart`}
+            <Link shallow passHref
+              href={{
+                pathname: router.pathname,
+                query: router.query?.['open'] === 'cart' ? removeQuery(router.query, 'open') : { ...router.query, open: 'cart' },
+              }}
+              as={{ 
+                pathname: router.query?.['open'] ? removeParameterFromUrl(router.asPath, 'open') : router.asPath,
+                query: router.query?.['open'] === 'cart' ? {} : { open: 'cart' },
+              }}
+              replace
               // eventKey={2} 
             >
               <Nav.Link 
                 disabled={router.pathname === '/cart'} 
-                href={router.query?.['cart'] ? router.pathname : `/cart`}  
                 active={router.pathname === '/cart'}
                 className={`d-flex align-items-center mx-2`}
               >
@@ -111,6 +141,22 @@ function HeaderDesktopOnly(props: any) {
       </Container>
     </Navbar>
   );
+}
+
+function removeQuery(query: any, parameter: string | string[]) {
+  const clone = {...query};
+  if (typeof parameter === 'string') {
+    delete clone[parameter]
+  } else if (Array.isArray(parameter)) {
+    parameter.forEach(param => delete clone[param])
+  }
+  return clone
+}
+
+function removeParameterFromUrl(url: string, parameter: string) {
+  return url
+    .replace(new RegExp('[?&]' + parameter + '=[^&#]*(#.*)?$'), '$1')
+    .replace(new RegExp('([?&])' + parameter + '=[^&]*&'), '$1');
 }
 
 export default HeaderDesktopOnly;
