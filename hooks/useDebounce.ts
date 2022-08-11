@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 
 export function useDebounceHandler<T extends (...args: any[]) => any>(callback: T, delay: number, immediate?: boolean): T {
-	var timeout;
-	return function(args) {
+	var timeout: string | number | NodeJS.Timeout | undefined;
+	return function(args: any[]) {
     
     var later = function() {
-      timeout = null;
+      timeout = undefined;
 			if (!immediate) callback(args);
 		};
 		var callNow = immediate && !timeout;
