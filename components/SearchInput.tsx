@@ -65,7 +65,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
             )}
           </Dropdown.Menu>
 
-          <button></button>
       </Dropdown>
     </Form>
   )
