@@ -15,7 +15,7 @@ export function useDebounceHandler<T extends (...args: any[]) => any>(callback: 
 	} as any
 };
 
-export function useDebounceEffect(effect: React.EffectCallback, delay: number, deps?: React.DependencyList) {
+export function useDebounceEffect(effect: React.EffectCallback, delay: number, deps: React.DependencyList=[]) {
   // State and setters for debounced value
   useEffect(
     () => {
@@ -30,7 +30,8 @@ export function useDebounceEffect(effect: React.EffectCallback, delay: number, d
         clearTimeout(handler);
       };
     },
-    [delay].concat(deps) // Only re-call effect if value or delay changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [delay].concat(deps as any[]) // Only re-call effect if value or delay changes
   );
 }
 
@@ -47,7 +48,8 @@ export function useDebounceTypingEffect(effect: React.EffectCallback, delay: num
   useEffect(() => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useDebounceHandler(callback, delay, !immediate)()
-  }, [delay].concat(deps))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [delay].concat(deps as any[]))
 
   useDebounceEffect(() => {
     setImmediate(false)
