@@ -41,10 +41,10 @@ const SearchInput: React.FC<SearchInputProps> = ({
           <Dropdown.Toggle ref={inputRef}
             as={CustomToggleAndInputSearch} 
             id="dropdown-custom-components" 
-            value={value} onChange={e => onChangeText(e?.target?.value || '')}
+            value={value} onChange={(e: any) => onChangeText(e?.target?.value || '')}
           />
 
-          {/* <input type="hidden" id="search-velue" name={queryName} value={value} /> */}
+          {/* <input type="hidden" id="search-velue" name={queryName} value={value} onChange={e => {}} /> */}
         
           <Dropdown.Menu className='w-100' >
             {!value && <Dropdown.Header>{'Buscas recentes'}</Dropdown.Header>}
