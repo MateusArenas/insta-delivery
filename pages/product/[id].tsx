@@ -53,7 +53,7 @@ React.useEffect(() => {
 
         <div className="row g-0 g-lg-5 my-0 mx-0 mb-lg-4 mt-lg-4">
             <div className="col-12 px-0 col-lg-6 mt-lg-0">
-              <div className="bg-dark rounded rounded-0 rounded-lg-2 w-100 h-auto" style={{ aspectRatio: "16/9" }} />
+              <div className="bg-secondary rounded rounded-0 rounded-lg-2 w-100 h-auto" style={{ aspectRatio: "16/9" }} />
             </div>
             <div className="col-12 col-lg-6 mt-3 mt-lg-0 px-3">
               <h3 className="" >Hamburger</h3>
@@ -68,7 +68,7 @@ React.useEffect(() => {
             <div className="py-2 border rounded px-3 py-1 h-100">
                 <div className="d-flex flex-row align-items-center justify-content-between w-100">
                   <div className='d-flex align-items-center'>
-                    <div className='rounded-circle bg-dark me-2' style={{ width: 32, height: 32 }} /> 
+                    <div className='rounded-circle bg-secondary me-2' style={{ width: 32, height: 32 }} /> 
                     <h6 className='mb-0'>Habibis</h6>
                   </div>
 

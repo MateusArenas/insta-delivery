@@ -31,7 +31,19 @@ const Post: NextPage<any> = ({ vertical, component, className }) => {
         <div className={`row g-0 g-lg-5 my-0 mx-0 ${vertical ? '' : 'my-lg-4'}`}>
 
             <div className={`col-12 order-2 ${vertical ? '' : 'col-lg-6 order-lg-1 mt-lg-0'} px-0 mt-0`}>
-              <div className={`bg-dark ${vertical ? '' : 'rounded-desktop-only'} w-100 h-auto`} style={{ aspectRatio: "16/9" }} />
+
+              <div className="position-relative ">
+                <div  className={`card-img-center ${vertical ? '' : 'rounded-desktop-only'} bg-secondary w-100 h-auto`} style={{ aspectRatio: "16/9" }} />
+                  <Link passHref shallow
+                    href={router.query?.['productId'] ? router.pathname : `/?productId=${'abc1234'}`}
+                    as={router.query?.['productId'] ? router.pathname : `/product/${'abc1234'}`}
+                  >
+                    <a className="btn btn-transparent position-absolute top-50 start-50 translate-middle p-2 bg-white border border-light rounded-circle">
+                      <span className="visually-hidden">New alerts</span>
+                    </a>
+                  </Link>
+              </div>
+
             </div>
             
             <div className={`col-12 order-3 ${vertical ? '' : 'col-lg-6 order-lg-1 px-lg-3'} mt-0 px-0`}>
@@ -51,7 +63,7 @@ const Post: NextPage<any> = ({ vertical, component, className }) => {
 
                   <div className="col">
                     <div className="d-flex h-100 flex-row align-items-center">
-                      <div  className="bg-dark rounded-circle" style={{ height: 32, width: 32 }} />
+                      <div  className="bg-secondary rounded-circle" style={{ height: 32, width: 32 }} />
                       <h6 className="card-title ms-2 mb-0">Card title</h6>
                     </div>
                   </div>
