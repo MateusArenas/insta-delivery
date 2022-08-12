@@ -1,10 +1,10 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
 import React from 'react'
-import BagContext, { getId } from '../../contexts/bag'
+import BagContext, { getId } from '../../../contexts/bag'
 import { MdRemove, MdAdd, MdStar, MdMoreHoriz } from 'react-icons/md'
 import { IoMdEye } from 'react-icons/io'
 
@@ -13,7 +13,14 @@ import { Dropdown } from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import { Button } from 'react-bootstrap'
 
-const Post: NextPage<any> = ({ vertical, component, className }) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  
+  return {
+    props: { _id: 'server-side-id:'+context.query?.id }, // will be passed to the page component as props
+  }
+}
+
+const Post: NextPage<any> = ({ _id, vertical, component, className }) => {
   const router = useRouter()
 
   return (
@@ -28,12 +35,12 @@ const Post: NextPage<any> = ({ vertical, component, className }) => {
           onClick={() => router.back()}
         /> */}
 
-        <div className={`row g-0 g-lg-5 my-0 mx-0 ${vertical ? '' : 'my-lg-4'}`}>
+        <div className={`row g-0 g-lg-5 my-0 mx-0 ${vertical ? '' : 'mt-lg-4'}`}>
 
             <div className={`col-12 order-2 ${vertical ? '' : 'col-lg-6 order-lg-1 mt-lg-0'} px-0 mt-0`}>
 
-              <div className="position-relative ">
-                <div  className={`card-img-center ${vertical ? '' : 'rounded-desktop-only'} bg-secondary w-100 h-auto`} style={{ aspectRatio: "16/9" }} />
+              <div className={`position-relative overflow-hidden bg-secondary ${vertical ? '' : 'rounded-desktop-only py-lg-5'} `}>
+                <div  className={`card-img-center bg-secondary w-100 h-auto`} style={{ aspectRatio: "16/9" }} />
                   <Link passHref shallow
                     // href={router.query?.['productId'] ? router.pathname : `/?productId=${'abc1234'}`}
                     // as={router.query?.['productId'] ? router.pathname : `/product/${'abcd90'}`}
@@ -56,6 +63,7 @@ const Post: NextPage<any> = ({ vertical, component, className }) => {
               <div className="card-footer border-0">
                 <small className='opacity-50'>59 minutes ago</small>
               </div>
+              <p>id: {_id}</p>
             </div>
 
             <div className={`col-12 order-1 ${vertical ? '' : 'col-lg-6 order-lg-1 mt-lg-3'} px-0 mt-0`}>
@@ -64,10 +72,12 @@ const Post: NextPage<any> = ({ vertical, component, className }) => {
                 <div className="row">
 
                   <div className="col">
-                    <div className="d-flex h-100 flex-row align-items-center">
-                      <div  className="bg-secondary rounded-circle" style={{ height: 32, width: 32 }} />
-                      <h6 className="card-title ms-2 mb-0">Card title</h6>
-                    </div>
+                    <Link passHref shallow href={`/${'mateus'}`}>
+                      <a className="d-flex h-100 flex-row align-items-center text-decoration-none">
+                        <div  className="bg-secondary rounded-circle" style={{ height: 32, width: 32 }} />
+                        <h6 className="card-title ms-2 mb-0">Card title</h6>
+                      </a>
+                    </Link>
                   </div>
 
                   <div className="col">
@@ -86,10 +96,9 @@ const Post: NextPage<any> = ({ vertical, component, className }) => {
                           <Dropdown.Divider />
                           <Dropdown.Item className=' text-danger' href="#/action-2"><strong>Desfavoritar</strong></Dropdown.Item>
                           <Dropdown.Divider />
-                          <Link passHref href={`/post/${'abc1234'}`}>
+                          <Link passHref href={`/${'mateus'}/post/${'abc1234'}`}>
                             <Dropdown.Item>Ir para publicação</Dropdown.Item>
                           </Link>
-
                           <Dropdown.Divider />
                           <Dropdown.Item href="#/action-1">Copiar link</Dropdown.Item>
                         </Dropdown.Menu>
@@ -109,3 +118,4 @@ const Post: NextPage<any> = ({ vertical, component, className }) => {
 }
 
 export default Post
+

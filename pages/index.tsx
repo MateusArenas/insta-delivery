@@ -8,7 +8,7 @@ import { MdMoreHoriz } from 'react-icons/md';
 import { Offcanvas, CloseButton } from 'react-bootstrap';
 
 import React from 'react'
-import Post from './post/[id]'
+import Post from './[store]/post/[id]'
 import BagContext from '../contexts/bag'
 import api from '../services/api'
 

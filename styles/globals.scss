@@ -42,6 +42,12 @@ a {
   top: 80px !important;
 }
 
+@media only screen and (min-width: 990px) {
+  .header-offset-divided-down-lg {
+    top: 40px !important;
+  }
+}
+
 .bottom-tab-height {
   height: 50px !important;
   z-index: 3;
