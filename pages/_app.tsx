@@ -2,8 +2,8 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import React, { ReactElement, ReactNode } from 'react'
 
-import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/globals.scss'
 
 import type { AppProps } from 'next/app'
 import Link from 'next/link'

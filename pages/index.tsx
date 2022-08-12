@@ -8,7 +8,7 @@ import { MdMoreHoriz } from 'react-icons/md';
 import { Offcanvas, CloseButton } from 'react-bootstrap';
 
 import React from 'react'
-import Post from '../components/Post'
+import Post from './post/[id]'
 import BagContext from '../contexts/bag'
 import api from '../services/api'
 
@@ -33,10 +33,9 @@ const Home: NextPage = () => {
         <div className="row p-0 m-0">
 
           <div className="col-12 col-lg-6 p-0 px-md-4 mx-md-2 mt-4">
-            <Post />
-            <Post />
-            <Post />
-            <Post />
+           {[1,2,3,4,5].map((item, index) => 
+            <Post key={index} component vertical className="mb-3" />
+           )}
           </div>
 
           <div className="col-lg-6">
