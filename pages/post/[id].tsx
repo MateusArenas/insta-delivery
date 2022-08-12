@@ -35,8 +35,10 @@ const Post: NextPage<any> = ({ vertical, component, className }) => {
               <div className="position-relative ">
                 <div  className={`card-img-center ${vertical ? '' : 'rounded-desktop-only'} bg-secondary w-100 h-auto`} style={{ aspectRatio: "16/9" }} />
                   <Link passHref shallow
-                    href={router.query?.['productId'] ? router.pathname : `/?productId=${'abc1234'}`}
-                    as={router.query?.['productId'] ? router.pathname : `/product/${'abc1234'}`}
+                    // href={router.query?.['productId'] ? router.pathname : `/?productId=${'abc1234'}`}
+                    // as={router.query?.['productId'] ? router.pathname : `/product/${'abcd90'}`}
+                    href={{ pathname: router.pathname, query: { ...router.query, productId: 'abcd90' } }}
+                    as={`/product/${'abcd90'}`}
                   >
                     <a className="btn btn-transparent position-absolute top-50 start-50 translate-middle p-2 bg-white border border-light rounded-circle">
                       <span className="visually-hidden">New alerts</span>

@@ -25,7 +25,7 @@ const Product: NextPage = () => {
     quantity: 0
   }
 
-  const [quantity, setQuantity] = React.useState(findBagItem(item)?.quantity || 0);
+  const [quantity, setQuantity] = React.useState(findBagItem(item)?.quantity || 1);
 
   function handleSubmit () {
     setBagItem(item, quantity)
@@ -53,7 +53,7 @@ React.useEffect(() => {
 
         <div className="row g-0 g-lg-5 my-0 mx-0 mb-lg-4 mt-lg-4">
             <div className="col-12 px-0 col-lg-6 mt-lg-0">
-              <div className="bg-secondary rounded rounded-0 rounded-lg-2 w-100 h-auto" style={{ aspectRatio: "16/9" }} />
+              <div className="bg-secondary rounded-desktop-only w-100 h-auto" style={{ aspectRatio: "16/9" }} />
             </div>
             <div className="col-12 col-lg-6 mt-3 mt-lg-0 px-3">
               <h3 className="" >Hamburger</h3>
