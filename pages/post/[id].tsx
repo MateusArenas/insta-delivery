@@ -4,7 +4,7 @@ import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
 import React from 'react'
-import BagContext, { getId } from '../../../contexts/bag'
+import BagContext, { getId } from '../../contexts/bag'
 import { MdRemove, MdAdd, MdStar, MdMoreHoriz } from 'react-icons/md'
 import { IoMdEye } from 'react-icons/io'
 
@@ -96,7 +96,7 @@ const Post: NextPage<any> = ({ _id, vertical, component, className }) => {
                           <Dropdown.Divider />
                           <Dropdown.Item className=' text-danger' href="#/action-2"><strong>Desfavoritar</strong></Dropdown.Item>
                           <Dropdown.Divider />
-                          <Link passHref href={`/${'mateus'}/post/${'abc1234'}`}>
+                          <Link passHref href={`/post/${'abc1234'}`}>
                             <Dropdown.Item>Ir para publicação</Dropdown.Item>
                           </Link>
                           <Dropdown.Divider />

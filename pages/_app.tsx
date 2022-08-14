@@ -2,8 +2,8 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import React, { ReactElement, ReactNode } from 'react'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.scss'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import type { AppProps } from 'next/app'
 import Link from 'next/link'
@@ -16,7 +16,7 @@ import Andress from './andress';
 
 import BottomTabNavigator from '../components/BottomTabNavigator';
 import Product from './product/[id]';
-import Post from './[store]/post/[id]';
+import Post from './post/[id]';
 import { BagProvider } from '../contexts/bag';
 import useSwicthPageShowCase from '../hooks/useSwitchPageShowCases';
 import useBreakpoint from '../hooks/useBreakpoint';
@@ -159,7 +159,7 @@ const CustomModalDialog: React.FC<CustomModalDialogProps> = ({ children, nextId,
   const router = useRouter()
   return (
     <>
-      <CloseButton style={{ zIndex: 1 }} className='position-absolute header-offset-divided-down-lg end-0 top-0 m-3 rounded-circle bg-white p-2 d-none d-lg-block' 
+      <CloseButton style={{ zIndex: 1 }} className='position-absolute header-offset-divided-down-lg end-0 m-3 rounded-circle bg-white p-2 d-none d-lg-block' 
           onClick={() => router.back()}
       />
 
@@ -174,7 +174,7 @@ const CustomModalDialog: React.FC<CustomModalDialogProps> = ({ children, nextId,
 
       {!!previousId && <Link replace passHref shallow
         href={{ pathname: router.pathname, query: { ...router.query, postId: previousId } }}
-        as={`/${router.query?.store}/post/${previousId}`}
+        as={`/post/${previousId}`}
       >
         <Button disabled={!previousId} as={'a'} style={{ zIndex: 1 }} className='position-absolute text-dark start-0 top-50 mx-3 rounded-circle bg-white py-2 px-2 d-none d-lg-block' >
           <MdChevronLeft size={24} style={{ top: -2 }} />
