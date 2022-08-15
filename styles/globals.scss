@@ -103,6 +103,11 @@ hr {
     border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important;
   }
 
+  .display{
+    display:flex !important;
+    flex-direction: column !important;
+  }
+
   .bottom-tab-content-offset {
     padding-bottom: 50px !important;
   }

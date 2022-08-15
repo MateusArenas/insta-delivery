@@ -103,8 +103,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           fullscreen={'lg-down'}
           nextId={posts[posts?.findIndex(post => post?._id === router.query.postId)+1]?._id}
           previousId={posts[posts?.findIndex(post => post?._id === router.query.postId)-1]?._id}
+          scrollable
         >
-          <Post {...(posts?.find(post => post?._id === router.query.postId) || {})} />
+          <Modal.Body className='p-0 m-0'>
+            <Post {...(posts?.find(post => post?._id === router.query.postId) || {})} component />
+          </Modal.Body>
         </Modal>
 
         {/* offcanvas for cart */}
@@ -165,7 +168,7 @@ const CustomModalDialog: React.FC<CustomModalDialogProps> = ({ children, nextId,
 
       {!!nextId && <Link replace passHref shallow  
         href={{ pathname: router.pathname, query: { ...router.query, postId: nextId } }}
-        as={`/${router.query?.store}/post/${nextId}`}
+        as={`/post/${nextId}`}
       >
         <Button disabled={!nextId} as={'a'} style={{ zIndex: 1 }} className='position-absolute text-dark end-0 top-50 mx-3 rounded-circle bg-white py-2 px-2 d-none d-lg-block' >
           <MdChevronRight size={24} style={{ top: -2 }} />

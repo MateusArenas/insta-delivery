@@ -9,9 +9,11 @@ import { MdRemove, MdAdd, MdStar, MdMoreHoriz } from 'react-icons/md'
 import { IoMdEye } from 'react-icons/io'
 
 import CloseButton from 'react-bootstrap/CloseButton';
-import { Dropdown } from 'react-bootstrap' 
+import { Dropdown, Carousel } from 'react-bootstrap' 
 import { useRouter } from 'next/router'
 import { Button } from 'react-bootstrap'
+import { PresentationContext } from '../_app'
+
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   
@@ -22,6 +24,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const Post: NextPage<any> = ({ _id, vertical, component, className }) => {
   const router = useRouter()
+
+  const { setMemoryPosts } = React.useContext(PresentationContext)
+
+  function handlePost () {
+    setMemoryPosts(data)
+  }
+
+
+  const data = [
+    { _id: 'io' }, 
+    { _id: 'io2' }, 
+    { _id: 'io3' }, 
+    { _id: 'io4' }, 
+    { _id: 'io5' },
+    { _id: 'io6' },
+    { _id: 'io7' },
+    { _id: 'io8' },
+  ].filter(item => item?._id !== router.query?.id)
 
   return (
     <div className={`card ${vertical ? 'border-desktop-only' : 'border-0 px-lg-3 pb-3'} px-0 ${className}`}>
@@ -55,8 +75,8 @@ const Post: NextPage<any> = ({ _id, vertical, component, className }) => {
 
             </div>
             
-            <div className={`col-12 order-3 ${vertical ? '' : 'col-lg-6 order-lg-1 px-lg-3'} mt-0 px-0`}>
-             <div className="card-body border-0">
+            <div className={`col-12 order-3 ${vertical ? '' : 'col-lg-6 order-lg-2 px-lg-3'} mt-0 px-0`}>
+            <div className="card-body border-0">
                 <p className="card-text">Favorited by <strong>ambaracadia</strong> and <strong>51</strong> others</p>
                 <p className="card-text"><strong>Habibis</strong> esse hamburger com batatas são uma escolha ideal.</p>
               </div>
@@ -66,7 +86,7 @@ const Post: NextPage<any> = ({ _id, vertical, component, className }) => {
               <p>id: {_id}</p>
             </div>
 
-            <div className={`col-12 order-1 ${vertical ? '' : 'col-lg-6 order-lg-1 mt-lg-3'} px-0 mt-0`}>
+            <div className={`col-12 order-1 ${vertical ? '' : 'col-lg-12 order-lg-3 mt-lg-3'} px-0 mt-0`}>
 
               <div className={`card-header rounded ${vertical ? '' : 'border-desktop-only'}`}>
                 <div className="row">
@@ -113,9 +133,26 @@ const Post: NextPage<any> = ({ _id, vertical, component, className }) => {
 
         </div>
 
+        <hr className={`${component ? 'd-inline d-lg-none' : '' }`} />
+        <div className={`row g-4 ${component ? 'd-lg-none' : '' }`}>
+          {data?.map(memoryPost => (
+            <Link key={memoryPost?._id} passHref shallow
+              href={component ? `/post/${memoryPost?._id}` : { pathname: router.pathname, query: { ...router.query, postId: memoryPost?._id } }}
+              as={`/post/${memoryPost?._id}`}
+            >
+              <a className='col-12 col-md-6 col-lg-4 text-decoration-none' onClick={handlePost} >
+                <div className='d-flex align-items-center justify-content-center bg-secondary rounded-desktop-only w-100 h-auto' style={{ aspectRatio: "16/9" }}>
+                  <p className='text-white'>{memoryPost?._id}</p>
+                </div>
+              </a>
+            </Link>
+          ))}
+        </div>
+
     </div>
   )
 }
+
 
 export default Post
 
