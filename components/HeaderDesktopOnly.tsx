@@ -22,7 +22,7 @@ function HeaderDesktopOnly(props: any) {
   const debounce = useDebounce(search, 1000)
 
   return (
-    <Navbar style={{ zIndex: 999999 }} sticky='top' bg='white' className='border-bottom d-none d-lg-block align-items-center header-height' collapseOnSelect expand="md">
+    <Navbar style={{ zIndex: 1 }} sticky='top' bg='white' className='border-bottom d-none d-lg-block align-items-center header-height' collapseOnSelect expand="md">
       <Container className='h-100'>
         
         <Link passHref href='/' replace >

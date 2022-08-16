@@ -125,17 +125,16 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
           <Tabs id="uncontrolled-tab-example"
             defaultActiveKey="menu"
             className="mb-3" 
-            
+            style={{ zIndex: 1 }}
           >
             <Tab eventKey="menu" title="Cardápio">
               <Scrollspy items={menuData.map(item => item.title)} className="navbar sticky-top header-offset-top bg-white border-bottom px-3 pb-0 mb-3"
-                style={{ zIndex: 1 }}
                 currentClassName='text-success'  
                 scrolledPastClassName='text-success'
                 onUpdate={(e: { id: string }) => e?.id && setId(e?.id)}
-                offset={56}
+                offset={56} style={{ zIndex: 1 }}
               >
-                <ul className="nav">
+                <ul className="nav" >
                   {menuData.map(item => (
                     <li key={item.title} className={`nav-item ${id === item.title ? 'border-bottom border-2 border-primary' : ''}`}>
                       <Link passHref shallow replace href={`#${item.title}`} as={{ href: `/${router.query?.store}`, hash: `#${item.title}` }}>

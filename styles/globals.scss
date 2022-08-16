@@ -11,6 +11,9 @@ a {
   // text-decoration: none;
 }
 
+.modal-backdrop.show, .offcanvas-backdrop.show {
+  opacity: .1 !important;
+}
 
 .anchor[id]::before {
   content: '';

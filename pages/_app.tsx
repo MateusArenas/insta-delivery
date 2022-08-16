@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         </Modal>
 
         {/* offcanvas for product */}
-        <Offcanvas tabindex placement={'bottom'} className="offcanvas-height-adapter open-bellow" backdropClassName='open-bellow-bg'
+        <Offcanvas tabindex={-1} placement={'bottom'} className="offcanvas-height-adapter open-bellow" backdropClassName='open-bellow-bg'
           show={router.query.productId as unknown as boolean} 
           onHide={() => router.back()}
         >
@@ -111,9 +111,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         </Modal>
 
         {/* offcanvas for cart */}
-        <Offcanvas tabindex placement={'end'} 
+        <Offcanvas tabindex={-1} placement={'end'} 
           className='header-offset open-master' 
-          backdropClassName='header-offset open-master-bg' 
+          backdropClassName='open-master-bg' 
           show={(router.query?.open === 'cart') as unknown as boolean} 
           onHide={() => router.replace({ 
               pathname: router.pathname, 

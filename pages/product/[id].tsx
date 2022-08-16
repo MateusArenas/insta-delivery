@@ -52,7 +52,7 @@ React.useEffect(() => {
         />}
 
         {!presentation && (
-          <Button className='position-absolute opacity-75 start-0 top-0 m-3 rounded-circle text-dark bg-light px-2 ' 
+          <Button variant='light' className='position-absolute opacity-75 start-0 top-0 m-3 rounded-circle px-2 ' 
             onClick={() => router.back()}
           >
             <MdChevronLeft size={24} />
