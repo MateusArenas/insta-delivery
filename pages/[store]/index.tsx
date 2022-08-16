@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import React from 'react'
 import BagContext, { getId } from '../../contexts/bag'
-import { MdRemove, MdAdd, MdStar, MdMoreHoriz, MdLocalOffer } from 'react-icons/md'
+import { MdRemove, MdAdd, MdStar, MdMoreHoriz, MdLocalOffer, MdChevronLeft } from 'react-icons/md'
 import { IoMdEye } from 'react-icons/io'
 
 import CloseButton from 'react-bootstrap/CloseButton';
@@ -67,7 +67,18 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>}
 
-        <div className="d-flex flex-row mt-5 mb-3">
+      <div className={`mobile-header-height d-inline d-lg-none sticky-top d-flex flex-row border-bottom align-item-center justify-content-between bg-light`} >
+          <Button variant='transparent' className='' style={{ zIndex: 999 }}
+            onClick={() => router.back()}
+          >
+            <MdChevronLeft size={32} />
+          </Button>
+          <div className="position-absolute d-flex align-items-center justify-content-center w-100 h-100 text-center">
+            <h1 className='fs-5 mb-0'>Store</h1>
+          </div>
+      </div>
+
+        <div className="d-flex flex-row mt-4 mt-lg-5 mb-3">
           <div>
             <div className="bg-secondary rounded-circle" style={{ height: 82, width: 82 }} />
           </div>
@@ -117,7 +128,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
             
           >
             <Tab eventKey="menu" title="Cardápio">
-              <Scrollspy items={menuData.map(item => item.title)} className="navbar sticky-top bg-white border-bottom px-3 pb-0 mb-3"
+              <Scrollspy items={menuData.map(item => item.title)} className="navbar sticky-top header-offset-top bg-white border-bottom px-3 pb-0 mb-3"
                 style={{ zIndex: 1 }}
                 currentClassName='text-success'  
                 scrolledPastClassName='text-success'
@@ -147,7 +158,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                         <Link key={key}  passHref shallow 
                           href={{ pathname: router.pathname, query: { ...router.query, productId: item?._id } }}
                           as={`/product/${item?._id}`}
-                        >
+                          >
                           <a key={key} className='col-12 col-md-6 col-lg-4 text-decoration-none'
                             onClick={async (e) => {
                               e.preventDefault()

@@ -51,7 +51,7 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>}
 
-        <div className={`${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` } sticky-top d-flex flex-row border-bottom align-item-center justify-content-between bg-white`} style={{ height: 44 }}>
+        <div className={`${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` } sticky-top d-flex flex-row border-bottom align-item-center justify-content-between bg-light`} style={{ height: 44 }}>
           <Button variant='transparent' className='' style={{ zIndex: 999 }}
             onClick={() => router.back()}
           >

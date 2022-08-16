@@ -11,12 +11,33 @@ a {
   // text-decoration: none;
 }
 
+
 .anchor[id]::before {
   content: '';
   display: block;
-  height:      75px;
-  margin-top: -75px;
+  height:      155px !important;
+  margin-top: -155px !important;
   visibility: hidden;
+}
+
+.header-offset-top {
+  top: 80px !important;
+}
+
+// header mobile
+@media only screen and (max-width: 991px) {
+  .mobile-header-height {
+    height: 45px !important;
+  }
+
+  .header-offset-top {
+    top: 45px !important;
+  }
+
+  .anchor[id]::before {
+    height:      120px !important;
+    margin-top: -120px !important;
+  }
 }
 
 * {
