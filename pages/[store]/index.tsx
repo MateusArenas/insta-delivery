@@ -127,7 +127,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                 <ul className="nav">
                   {menuData.map(item => (
                     <li key={item.title} className={`nav-item ${id === item.title ? 'border-bottom border-2 border-primary' : ''}`}>
-                      <Link passHref shallow  href={`#${item.title}`}>
+                      <Link passHref shallow replace href={`#${item.title}`}>
                         <a className={`nav-link fs-6 fw-semibold ${id === item.title ? 'active' : 'text-dark'}`} >
                           {item.title}
                         </a>
