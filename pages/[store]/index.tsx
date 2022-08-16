@@ -117,7 +117,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
             
           >
             <Tab eventKey="menu" title="Cardápio">
-              <Scrollspy items={menuData.map(item => item.title)} className="navbar sticky-top bg-light px-3 pb-0 mb-3"
+              <Scrollspy items={menuData.map(item => item.title)} className="navbar sticky-top bg-white px-3 pb-0 mb-3"
                 style={{ zIndex: 1 }}
                 currentClassName='text-success'  
                 scrolledPastClassName='text-success'
