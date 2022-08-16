@@ -127,9 +127,11 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                 <ul className="nav">
                   {menuData.map(item => (
                     <li key={item.title} className={`nav-item ${id === item.title ? 'border-bottom border-2 border-primary' : ''}`}>
-                      <a className={`nav-link fs-6 fw-semibold ${id === item.title ? 'active' : 'text-dark'}`} href={`#${item.title}`}>
-                        {item.title}
-                      </a>
+                      <Link passHref shallow  href={`#${item.title}`}>
+                        <a className={`nav-link fs-6 fw-semibold ${id === item.title ? 'active' : 'text-dark'}`} >
+                          {item.title}
+                        </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -188,34 +190,6 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                 </div>
             </Tab>
 
-            <Tab eventKey='test' title='teste'>
-              <Scrollspy items={['scrollspyHeading1', 'scrollspyHeading2']} className="navbar sticky-top bg-light px-3 mb-3"
-                currentClassName='text-success'  
-                scrolledPastClassName='text-success'
-                onUpdate={(e: { id: string }) => setId(e?.id)}
-              >
-                <ul className="nav">
-                  <li className={`nav-item`}>
-                    <a className={`nav-link ${id === 'scrollspyHeading1' ? 'active' : 'text-dark'}`} href="#scrollspyHeading1">First</a>
-                  </li>
-                  <li className={`nav-item`}>
-                    <a className={`nav-link ${id === 'scrollspyHeading2' ? 'active' : 'text-dark'}`} href="#scrollspyHeading2">Second</a>
-                  </li>
-                </ul>
-              </Scrollspy >
-              <div className="bg-light p-3 rounded-2">
-                <h4 id="scrollspyHeading1">First heading</h4>
-                <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. Its repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-                <h4 id="scrollspyHeading2">Second heading</h4>
-                <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. Its repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-                <h4 id="scrollspyHeading3">Third heading</h4>
-                <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. Its repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-                <h4 id="scrollspyHeading4">Fourth heading</h4>
-                <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. Its repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-                <h4 id="scrollspyHeading5">Fifth heading</h4>
-                <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. Its repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-              </div>
-            </Tab>
           </Tabs>
 
         </div>
