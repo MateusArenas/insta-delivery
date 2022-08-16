@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import React from 'react'
 import BagContext, { getId } from '../../contexts/bag'
-import { MdRemove, MdAdd, MdStar, MdMoreHoriz } from 'react-icons/md'
+import { MdRemove, MdAdd, MdStar, MdMoreHoriz, MdChevronLeft } from 'react-icons/md'
 import { IoMdEye } from 'react-icons/io'
 
 import CloseButton from 'react-bootstrap/CloseButton';
@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-const Post: NextPage<any> = ({ _id, vertical, component, className }) => {
+const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
   const router = useRouter()
 
   const { setMemoryPosts } = React.useContext(PresentationContext)
@@ -41,7 +41,7 @@ const Post: NextPage<any> = ({ _id, vertical, component, className }) => {
     { _id: 'io6' },
     { _id: 'io7' },
     { _id: 'io8' },
-  ].filter(item => item?._id !== router.query?.id)
+  ].filter(item => item?._id !== (router.query?.postId || router.query?.id))
 
   return (
     <div className={`card ${vertical ? 'border-desktop-only' : 'border-0 px-lg-3 pb-3'} px-0 ${className}`}>
@@ -51,9 +51,16 @@ const Post: NextPage<any> = ({ _id, vertical, component, className }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>}
 
-        {/* <CloseButton className='position-absolute end-0 top-0 m-3 rounded-circle bg-white p-2' 
-          onClick={() => router.back()}
-        /> */}
+        <div className={`${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` } sticky-top d-flex flex-row border-bottom align-item-center justify-content-between bg-white`} style={{ height: 44 }}>
+          <Button variant='transparent' className='' style={{ zIndex: 999 }}
+            onClick={() => router.back()}
+          >
+            <MdChevronLeft size={32} />
+          </Button>
+          <div className="position-absolute d-flex align-items-center justify-content-center w-100 h-100 text-center">
+            <h1 className='fs-5 mb-0'>Post</h1>
+          </div>
+        </div>
 
         <div className={`row g-0 g-lg-5 my-0 mx-0 ${vertical ? '' : 'mt-lg-4'}`}>
 
@@ -133,11 +140,16 @@ const Post: NextPage<any> = ({ _id, vertical, component, className }) => {
 
         </div>
 
-        <hr className={`${component ? 'd-inline d-lg-none' : '' }`} />
-        <div className={`row g-4 ${component ? 'd-lg-none' : '' }`}>
+
+        <hr className={`${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` }`} />
+        <p className={`ps-3 ${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` }`}>
+          <span className='fw-bold text-muted'>Mais publicações de </span> 
+          <Link passHref shallow href={`/${'mateus'}`}><a className='text-dark text-decoration-none'>{'mateus'}</a></Link>
+        </p>
+        <div className={`row g-4 ${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` }`}>
           {data?.map(memoryPost => (
-            <Link key={memoryPost?._id} passHref shallow
-              href={component ? `/post/${memoryPost?._id}` : { pathname: router.pathname, query: { ...router.query, postId: memoryPost?._id } }}
+            <Link key={memoryPost?._id} passHref shallow scroll
+              href={{ pathname: router.pathname, query: { ...router.query, postId: memoryPost?._id } }}
               as={`/post/${memoryPost?._id}`}
             >
               <a className='col-12 col-md-6 col-lg-4 text-decoration-none' onClick={handlePost} >

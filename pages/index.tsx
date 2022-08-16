@@ -34,7 +34,7 @@ const Home: NextPage = () => {
 
           <div className="col-12 col-lg-6 p-0 px-md-4 mx-md-2 mt-4">
            {[1,2,3,4,5].map((item, index) => 
-            <Post key={index} component vertical className="mb-3" />
+            <Post key={index} home component vertical className="mb-3" />
            )}
           </div>
 

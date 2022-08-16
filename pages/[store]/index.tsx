@@ -14,6 +14,8 @@ import { useRouter } from 'next/router'
 import { Button, Tabs, Tab } from 'react-bootstrap'
 import { PresentationContext } from '../_app'
 
+import Scrollspy from 'react-scrollspy'
+
 const Store: NextPage<any> = ({ vertical, component, className }) => {
   const router = useRouter()
 
@@ -27,6 +29,35 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
     { _id: '5' },
     { _id: '6' },
   ];
+
+  const menuData = [
+    { 
+      _id: 'gene1',
+      title: 'hamburgers', 
+      items: [
+        { _id: '1' },
+        { _id: '2' },
+        { _id: '3' },
+        { _id: '4' },
+        { _id: '5' },
+        { _id: '6' },
+      ] 
+    },
+    { 
+      _id: 'gene2',
+      title: 'pizzas', 
+      items: [
+        { _id: '1' },
+        { _id: '2' },
+        { _id: '3' },
+        { _id: '4' },
+        { _id: '5' },
+        { _id: '6' },
+      ] 
+    },
+  ];
+
+  const [id, setId] = React.useState<string>('scrollspyHeading1')
 
   return (
     <div className='container bottom-tab-content-offset'>
@@ -81,9 +112,65 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
         <div className="row">
 
           <Tabs id="uncontrolled-tab-example"
-            defaultActiveKey="posts"
+            defaultActiveKey="menu"
             className="mb-3" 
+            
           >
+            <Tab eventKey="menu" title="Cardápio">
+              <Scrollspy items={menuData.map(item => item.title)} className="navbar sticky-top bg-light px-3 pb-0 mb-3"
+                style={{ zIndex: 1 }}
+                currentClassName='text-success'  
+                scrolledPastClassName='text-success'
+                onUpdate={(e: { id: string }) => setId(e?.id)}
+                offset={56}
+              >
+                <ul className="nav">
+                  {menuData.map(item => (
+                    <li key={item.title} className={`nav-item ${id === item.title ? 'border-bottom border-2 border-primary' : ''}`}>
+                      <a className={`nav-link fs-6 fw-semibold ${id === item.title ? 'active' : 'text-dark'}`} href={`#${item.title}`}>
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Scrollspy >
+              {menuData.map((item, key) => (
+                <div key={item?._id} className="row g-1 g-md-3">
+                  <div className="col-12 py-3">
+                    <h4 className='text-muted' id={item.title} >{item.title}</h4>
+                  </div>
+                  <div className="col-12">
+                    <div className="row g-1 g-md-3">
+                      {item.items.map((item, key) => (
+                        <Link key={key}  passHref shallow 
+                          href={{ pathname: router.pathname, query: { ...router.query, productId: item?._id } }}
+                          as={`/product/${item?._id}`}
+                        >
+                          <a key={key} className='col-12 col-md-6 col-lg-4 text-decoration-none'>
+                            <div className="card mb-3 overflow-hiden text-dark">
+                              <div className="row g-0">
+                                <div className="col-7 col-md-6">
+                                  <div className="card-body">
+                                    <h6 className="card-title">Hamburger</h6>
+                                    <p className="card-text text-muted text-ellipsis-2">Pão Brioche, hamburguer artesanal de 140g, queijo prato, bacon crocante, molho barbecue , cebola roxa, alface e maionese hellmans .</p>
+                                    <p className="card-text"><strong className="text-success">R$ 22,99</strong></p>
+                                  </div>
+                                </div>
+                                <div className="col-5 col-md-6">
+                                  <div className='d-flex align-items-center justify-content-center bg-secondary rounded-end w-100 h-100' style={{ aspectRatio: "16/16" }}>
+                                    <p className='text-white'>{item?._id}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Tab>
             <Tab eventKey="posts" title="Postagens">
                 <div className="row g-1 g-md-3">
                   {data?.map((item, key) => (
@@ -100,8 +187,34 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                   ))}
                 </div>
             </Tab>
-            <Tab eventKey="menu" title="Cardápio">
-              
+
+            <Tab eventKey='test' title='teste'>
+              <Scrollspy items={['scrollspyHeading1', 'scrollspyHeading2']} className="navbar sticky-top bg-light px-3 mb-3"
+                currentClassName='text-success'  
+                scrolledPastClassName='text-success'
+                onUpdate={(e: { id: string }) => setId(e?.id)}
+              >
+                <ul className="nav">
+                  <li className={`nav-item`}>
+                    <a className={`nav-link ${id === 'scrollspyHeading1' ? 'active' : 'text-dark'}`} href="#scrollspyHeading1">First</a>
+                  </li>
+                  <li className={`nav-item`}>
+                    <a className={`nav-link ${id === 'scrollspyHeading2' ? 'active' : 'text-dark'}`} href="#scrollspyHeading2">Second</a>
+                  </li>
+                </ul>
+              </Scrollspy >
+              <div className="bg-light p-3 rounded-2">
+                <h4 id="scrollspyHeading1">First heading</h4>
+                <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. Its repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                <h4 id="scrollspyHeading2">Second heading</h4>
+                <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. Its repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                <h4 id="scrollspyHeading3">Third heading</h4>
+                <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. Its repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                <h4 id="scrollspyHeading4">Fourth heading</h4>
+                <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. Its repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. Its repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+              </div>
             </Tab>
           </Tabs>
 

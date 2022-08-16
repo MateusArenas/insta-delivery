@@ -11,6 +11,14 @@ a {
   // text-decoration: none;
 }
 
+[id]::before {
+  content: '';
+  display: block;
+  height:      56px;
+  margin-top: -56px;
+  visibility: hidden;
+}
+
 * {
   box-sizing: border-box;
 }

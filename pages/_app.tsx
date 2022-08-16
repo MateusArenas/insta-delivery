@@ -33,6 +33,7 @@ interface PresentationContextData {
 export const PresentationContext = React.createContext<PresentationContextData>({} as PresentationContextData)
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const ModalRef = React.createRef<HTMLDivElement>()
   const [posts, setPosts] = React.useState<any[]>([])
 
   const router = useRouter()
@@ -47,8 +48,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     paths: ['/cart', '/andress'],
     options: { queryKey: 'open' }
   })
-
-  
 
   return (
     <PresentationContext.Provider value={{ setMemoryPosts: posts => setPosts(posts) }}>
@@ -98,6 +97,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           backdropClassName='open-bellow-bg header-offset-divided-down-lg' 
           show={router.query.postId as unknown as boolean} 
           onHide={() => router.back()}
+          onShow={() => ModalRef.current?.scrollTo?.({ top: 0, behavior: "smooth" })}
           dialogAs={CustomModalDialog}
           size="xl" 
           fullscreen={'lg-down'}
@@ -105,7 +105,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           previousId={posts[posts?.findIndex(post => post?._id === router.query.postId)-1]?._id}
           scrollable
         >
-          <Modal.Body className='p-0 m-0'>
+          <Modal.Body ref={ModalRef} className='p-0 m-0'>
             <Post {...(posts?.find(post => post?._id === router.query.postId) || {})} component />
           </Modal.Body>
         </Modal>
