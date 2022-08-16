@@ -67,8 +67,8 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>}
 
-      <div className={`mobile-header-height d-inline d-lg-none sticky-top d-flex flex-row border-bottom align-item-center justify-content-between bg-light`} >
-          <Button variant='transparent' className='' style={{ zIndex: 999 }}
+      <div className={`mobile-header-height d-inline d-lg-none sticky-top d-flex flex-row border-bottom align-item-center justify-content-between bg-light`} style={{ zIndex: 1 }} >
+          <Button variant='transparent' className='' style={{ zIndex: 1 }}
             onClick={() => router.back()}
           >
             <MdChevronLeft size={32} />

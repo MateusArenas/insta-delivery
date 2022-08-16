@@ -51,8 +51,8 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>}
 
-        <div className={`${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` } sticky-top d-flex flex-row border-bottom align-item-center justify-content-between bg-light`} style={{ height: 44 }}>
-          <Button variant='transparent' className='' style={{ zIndex: 999 }}
+        <div className={`mobile-header-height ${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` } sticky-top d-flex flex-row border-bottom align-item-center justify-content-between bg-light`} style={{ zIndex: 1 }}>
+          <Button variant='transparent' className='' style={{ zIndex: 1 }}
             onClick={() => router.back()}
           >
             <MdChevronLeft size={32} />

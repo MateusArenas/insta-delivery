@@ -87,7 +87,7 @@ React.useEffect(() => {
             <hr className='d-block d-lg-none my-1 my-lg-0' />
             <div className="row g-0 g-lg-3 align-items-center justify-content-between justify-content-lg-end h-100 px-3 px-lg-0">
 
-              <div className="col-6 col-lg-5 h-100">
+              <div className="col-5 col-md-6 col-lg-5 h-100">
 
 
                   <div className="d-flex flex-row align-items-center justify-content-between border rounded px-3 py-1 h-100">
@@ -109,7 +109,7 @@ React.useEffect(() => {
 
               </div>
 
-              <div className="col-6">
+              <div className="col-7 col-md-6">
                 <button onClick={() => handleSubmit()} className={`btn ${quantity ? 'btn-primary' : 'btn-danger'} py-3 px-3 h-100 w-100`}>
                   <div className="d-flex flex-row align-items-center px-1 justify-content-between">
                     <h6 className="mb-0">{quantity ? 'Adicionar' : 'Remover'}</h6>
