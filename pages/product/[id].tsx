@@ -119,7 +119,7 @@ React.useEffect(() => {
               </div>
 
             </div>
-            <hr className='d-block d-lg-none my-0' />
+            {/* <hr className='d-block d-lg-none my-0' /> */}
           </div>
         </div>
     </div>
