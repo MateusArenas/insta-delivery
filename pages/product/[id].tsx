@@ -84,8 +84,8 @@ React.useEffect(() => {
 
           </div>
           <div className="col-12 py-0 col-lg-6 product-bar-position-adapter bg-white bg-lg-transparent">
-            <hr className='d-block d-lg-none my-1 my-lg-0' />
-            <div className="row g-0 g-lg-3 align-items-center justify-content-between justify-content-lg-end h-100 px-3 px-lg-0">
+            <hr className='d-block d-lg-none my-0' />
+            <div className="row g-2 g-lg-3 align-self-center align-items-center justify-content-between justify-content-lg-end h-100 px-3 px-lg-0">
 
               <div className="col-5 col-md-6 col-lg-5 h-100">
 
@@ -119,7 +119,7 @@ React.useEffect(() => {
               </div>
 
             </div>
-            <hr className='d-block d-lg-none my-1 my-lg-0' />
+            <hr className='d-block d-lg-none my-0' />
           </div>
         </div>
     </div>
