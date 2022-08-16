@@ -149,9 +149,11 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                           as={`/product/${item?._id}`}
                         >
                           <a key={key} className='col-12 col-md-6 col-lg-4 text-decoration-none'
-                            onClick={() => {
+                            onClick={async (e) => {
+                              e.preventDefault()
                               setId(section.title)
-                              router.replace(`/${router.query?.store}`, `/${router.query?.store}`, { shallow: true })
+                              await router.replace(`/${router.query?.store}`, `/${router.query?.store}`, { shallow: true, scroll: false })
+                              await router.push({ pathname: router.pathname, query: { ...router.query, productId: item?._id } }, `/product/${item?._id}`, { shallow: true, scroll: false })
                             }}
                           >
                             <div className="card mb-3 overflow-hiden text-dark">
