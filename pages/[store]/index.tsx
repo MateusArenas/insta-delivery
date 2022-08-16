@@ -72,7 +72,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
             <div className="bg-secondary rounded-circle" style={{ height: 82, width: 82 }} />
           </div>
 
-          <div className="row ms-2 ms-lg-4">
+          <div className="row ms-0 ms-md-2 ms-lg-4">
             <div className="col-12 col-md-8">
               <div className='d-flex flex-column w-100' >
                 <div className="d-flex flex-row align-items-center mb-1">
