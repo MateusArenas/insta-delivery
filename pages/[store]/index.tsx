@@ -149,7 +149,10 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                           as={`/product/${item?._id}`}
                         >
                           <a key={key} className='col-12 col-md-6 col-lg-4 text-decoration-none'
-                            onClick={() => router.replace(`/${router.query?.store}`, undefined, { shallow: true })}
+                            onClick={() => {
+                              setId(section.title)
+                              router.replace(`/${router.query?.store}`, `/${router.query?.store}`, { shallow: true })
+                            }}
                           >
                             <div className="card mb-3 overflow-hiden text-dark">
                               <div className="row g-0">
