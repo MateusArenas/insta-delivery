@@ -136,19 +136,21 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                   ))}
                 </ul>
               </Scrollspy >
-              {menuData.map((item, key) => (
-                <div key={item?._id} className="row g-1 g-md-3">
+              {menuData.map((section, key) => (
+                <div key={section?._id} className="row g-1 g-md-3">
                   <div className="col-12 py-3">
-                    <h4 className='anchor text-muted' id={item.title} >{item.title}</h4>
+                    <h4 className='anchor text-muted' id={section.title} >{section.title}</h4>
                   </div>
                   <div className="col-12">
                     <div className="row g-1 g-md-3">
-                      {item.items.map((item, key) => (
+                      {section.items.map((item, key) => (
                         <Link key={key}  passHref shallow 
                           href={{ pathname: router.pathname, query: { ...router.query, productId: item?._id } }}
                           as={`/product/${item?._id}`}
                         >
-                          <a key={key} className='col-12 col-md-6 col-lg-4 text-decoration-none'>
+                          <a key={key} className='col-12 col-md-6 col-lg-4 text-decoration-none'
+                            onClick={() => router.replace(`#${section.title}`, undefined, { shallow: true })}
+                          >
                             <div className="card mb-3 overflow-hiden text-dark">
                               <div className="row g-0">
                                 <div className="col-7 col-md-6">
