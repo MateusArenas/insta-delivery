@@ -87,7 +87,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           onHide={() => router.back()}
         >
           <Offcanvas.Body className='p-0'>
-            <Product />
+            <Product presentation />
           </Offcanvas.Body>
         </Offcanvas>
 
