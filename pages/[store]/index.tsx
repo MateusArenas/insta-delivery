@@ -137,9 +137,9 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                 </ul>
               </Scrollspy >
               {menuData.map((item, key) => (
-                <div key={item?._id} className="row g-1 g-md-3">
+                <div key={item?._id} className="row g-1 g-md-3" id={item.title}>
                   <div className="col-12 py-3">
-                    <h4 className='text-muted' id={item.title} >{item.title}</h4>
+                    <h4 className='text-muted' >{item.title}</h4>
                   </div>
                   <div className="col-12">
                     <div className="row g-1 g-md-3">
