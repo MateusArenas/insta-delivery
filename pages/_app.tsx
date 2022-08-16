@@ -85,6 +85,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         <Offcanvas tabindex={-1} placement={'bottom'} className="offcanvas-height-adapter open-bellow" backdropClassName='open-bellow-bg'
           show={router.query.productId as unknown as boolean} 
           onHide={() => router.back()}
+          scroll={false}
         >
           <Offcanvas.Body className='p-0'>
             <Product presentation />
