@@ -57,7 +57,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
     },
   ];
 
-  const [id, setId] = React.useState<string>('scrollspyHeading1')
+  const [id, setId] = React.useState<string>('')
 
   return (
     <div className='container bottom-tab-content-offset'>
@@ -149,7 +149,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                           as={`/product/${item?._id}`}
                         >
                           <a key={key} className='col-12 col-md-6 col-lg-4 text-decoration-none'
-                            onClick={() => router.replace(`#${section.title}`, undefined, { shallow: true })}
+                            onClick={() => router.replace(`/${router.query?.store}`, undefined, { shallow: true })}
                           >
                             <div className="card mb-3 overflow-hiden text-dark">
                               <div className="row g-0">
