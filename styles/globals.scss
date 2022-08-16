@@ -11,7 +11,7 @@ a {
   // text-decoration: none;
 }
 
-[id]::before {
+.anchor[id]::before {
   content: '';
   display: block;
   height:      56px;
