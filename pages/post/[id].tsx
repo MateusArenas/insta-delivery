@@ -3,6 +3,8 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
+import Image from 'next/image'
+
 import React from 'react'
 import BagContext, { getId } from '../../contexts/bag'
 import { MdRemove, MdAdd, MdStar, MdMoreHoriz, MdChevronLeft } from 'react-icons/md'
@@ -67,7 +69,11 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
             <div className={`col-12 order-2 ${vertical ? '' : 'col-lg-6 order-lg-1 mt-lg-0'} px-0 mt-0`}>
 
               <div className={`position-relative overflow-hidden bg-secondary ${vertical ? '' : 'rounded-desktop-only py-lg-5'} `}>
-                <div  className={`card-img-center bg-secondary w-100 h-auto`} style={{ aspectRatio: "16/9" }} />
+                <div  className={`card-img-center bg-secondary w-100 h-auto`} style={{ aspectRatio: "16/9" }} >
+                  <Image alt='post-img' src="/images/default-post.jpg" objectFit='cover' layout="fill" width={1080} height={566}  />
+                </div>
+
+
                   <Link passHref shallow
                     // href={router.query?.['productId'] ? router.pathname : `/?productId=${'abc1234'}`}
                     // as={router.query?.['productId'] ? router.pathname : `/product/${'abcd90'}`}
@@ -100,8 +106,10 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
                   <div className="col">
                     <Link passHref shallow href={`/${'mateus'}`}>
                       <a className="d-flex h-100 flex-row align-items-center text-decoration-none">
-                        <div  className="bg-secondary rounded-circle" style={{ height: 32, width: 32 }} />
-                        <h6 className="card-title ms-2 mb-0">Card title</h6>
+                        <div  className="bg-secondary rounded-3 position-relative overflow-hidden" style={{ height: 42, width: 42 }} >
+                          <Image alt='store-avatar-img' src="/images/default-store-avatar.webp" objectFit="cover" layout="fill" width={900} height={900} />
+                        </div>
+                        <h6 className="card-title text-dark ms-2 mb-0">Habibs - Mauá</h6>
                       </a>
                     </Link>
                   </div>
@@ -140,20 +148,21 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
         </div>
 
 
-        <hr className={`${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` }`} />
-        <p className={`ps-3 ${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` }`}>
+        <hr className={`${(!component) ? '' : `${home ? 'd-none' : 'd-lg-none'}` }`} />
+        <p className={`ps-3 ${(!component) ? '' : `${home ? 'd-none' : 'd-lg-none'}` }`}>
           <span className='fw-bold text-muted'>Mais publicações de </span> 
           <Link passHref shallow href={`/${'mateus'}`}><a className='text-dark text-decoration-none'>{'mateus'}</a></Link>
         </p>
-        <div className={`row gy-4 gx-0 gx-lg-4 gy-lg-4 mb-4 ${(!component) ? '' : `${home ? 'd-none' : 'd-inline d-lg-none'}` }`}>
+        <div className={`row gy-4 gx-0 gx-lg-4 gy-lg-4 mb-4 ${(!component) ? '' : `${home ? 'd-none' : 'd-lg-none'}` }`}>
           {data?.map(memoryPost => (
             <Link key={memoryPost?._id} passHref shallow scroll
               href={{ pathname: router.pathname, query: { ...router.query, postId: memoryPost?._id } }}
               as={`/post/${memoryPost?._id}`}
             >
               <a className='col-12 col-md-6 col-lg-4 text-decoration-none' onClick={handlePost} >
-                <div className='d-flex align-items-center justify-content-center bg-secondary rounded-desktop-only w-100 h-auto' style={{ aspectRatio: "16/9" }}>
-                  <p className='text-white'>{memoryPost?._id}</p>
+                <div className='d-flex align-items-center justify-content-center bg-secondary rounded-desktop-only w-100 h-auto position-relative overflow-hidden' style={{ aspectRatio: "16/9" }}>
+                  {/* <p className='text-white'>{memoryPost?._id}</p> */}
+                  <Image alt='post-img' src="/images/default-post.jpg" objectFit='cover' layout="fill" width={1080} height={566}  />
                 </div>
               </a>
             </Link>

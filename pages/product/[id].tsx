@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import React from 'react'
 import BagContext, { getId } from '../../contexts/bag'
@@ -48,12 +49,12 @@ React.useEffect(() => {
       </Head>
 
         {presentation && <CloseButton className='position-absolute end-0 top-0 m-3 rounded-circle bg-white p-2' 
-          onClick={() => router.back()}
+          onClick={() => router.back()} style={{ zIndex: 1 }}
         />}
 
         {!presentation && (
           <Button variant='light' className='position-absolute opacity-75 start-0 top-0 m-3 rounded-circle px-2 ' 
-            onClick={() => router.back()}
+            onClick={() => router.back()} style={{ zIndex: 1 }}
           >
             <MdChevronLeft size={24} />
           </Button>
@@ -61,7 +62,9 @@ React.useEffect(() => {
 
         <div className="row g-0 g-lg-5 my-0 mx-0 mb-lg-4 mt-lg-4">
             <div className="col-12 px-0 col-lg-6 mt-lg-0">
-              <div className="bg-secondary rounded-desktop-only w-100 h-auto" style={{ aspectRatio: "16/9" }} />
+              <div className="bg-secondary rounded-desktop-only w-100 h-auto position-relative overflow-hidden" style={{ aspectRatio: "16/9" }} >
+                <Image alt='product-img' src="/images/default-product.webp" objectFit="cover" layout="fill" width={1080} height={720} />
+              </div>
             </div>
             <div className="col-12 col-lg-6 mt-3 mt-lg-0 px-3">
               <h3 className="" >Hamburger</h3>

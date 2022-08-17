@@ -104,7 +104,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           previousId={posts[posts?.findIndex(post => post?._id === router.query.postId)-1]?._id}
           scrollable
         >
-          <Modal.Body ref={ModalRef} className='pt-0 px-0 m-0 bottom-tab-content-offset'>
+          <Modal.Body ref={ModalRef} className='pt-0 px-0 m-0'>
             <Post {...(posts?.find(post => post?._id === router.query.postId) || {})} component />
           </Modal.Body>
         </Modal>

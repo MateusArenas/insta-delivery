@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import React from 'react'
 import BagContext, { getId } from '../../contexts/bag'
@@ -80,7 +81,9 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
 
         <div className="d-flex flex-row mt-4 mt-lg-5 mb-3">
           <div>
-            <div className="bg-secondary rounded-circle" style={{ height: 82, width: 82 }} />
+            <div className="bg-secondary rounded-4 position-relative overflow-hidden" style={{ height: 82, width: 82 }} >
+              <Image alt='store-avatar-img' src="/images/default-store-avatar.webp" objectFit="cover" layout="fill" width={900} height={900} />
+            </div>
           </div>
 
           <div className="row ms-0 ms-md-2 ms-lg-4">
@@ -176,8 +179,9 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                                   </div>
                                 </div>
                                 <div className="col-5 col-md-6">
-                                  <div className='d-flex align-items-center justify-content-center bg-secondary rounded-end w-100 h-100' style={{ aspectRatio: "16/16" }}>
-                                    <p className='text-white'>{item?._id}</p>
+                                  <div className='d-flex align-items-center justify-content-center bg-secondary rounded-end w-100 h-100 position-relative overflow-hidden' style={{ aspectRatio: "16/16" }}>
+                                    {/* <p className='text-white'>{item?._id}</p> */}
+                                    <Image alt='product-img' src="/images/default-product.webp" objectFit="cover" layout="fill" width={1080} height={720} />
                                   </div>
                                 </div>
                               </div>
@@ -198,8 +202,9 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                       as={`/post/${item?._id}`}
                     >
                       <a className='col-6 col-md-4 col-lg-3 text-decoration-none' onClick={() => setMemoryPosts(data)} >
-                        <div className='d-flex align-items-center justify-content-center bg-secondary rounded w-100 h-auto' style={{ aspectRatio: "16/9" }}>
-                          <p className='text-white'>{item?._id}</p>
+                        <div className='d-flex align-items-center justify-content-center bg-secondary rounded-desktop-only w-100 h-auto position-relative overflow-hidden' style={{ aspectRatio: "16/9" }}>
+                          {/* <p className='text-white'>{item?._id}</p> */}
+                          <Image alt='post-img' src="/images/default-post.jpg" objectFit='cover' layout="fill" width={1080} height={566}  />
                         </div>
                       </a>
                     </Link>

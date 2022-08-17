@@ -55,7 +55,9 @@ const Search: NextPage = () => {
                     <div className="col">
                       <Link passHref shallow href={`/${'mateus'}`}>
                         <a className="d-flex h-100 flex-row align-items-center text-decoration-none">
-                          <div  className="bg-secondary rounded-circle" style={{ height: 32, width: 32 }} />
+                          <div  className="bg-secondary rounded-3 position-relative overflow-hidden" style={{ height: 42, width: 42 }} >
+                            <Image alt='product-img' src="/images/default-store-avatar.webp" objectFit="cover" layout="fill" width={900} height={900} />
+                          </div>
                           <h6 className="card-title ms-2 mb-0">Card title</h6>
                         </a>
                       </Link>
@@ -108,8 +110,9 @@ const Search: NextPage = () => {
                               </div>
                             </div>
                             <div className="col-5 col-md-6">
-                              <div className='d-flex align-items-center justify-content-center bg-secondary rounded-end w-100 h-100' style={{ aspectRatio: "16/16" }}>
-                                <p className='text-white'>{item?._id}</p>
+                              <div className='d-flex align-items-center justify-content-center bg-secondary rounded-end w-100 h-100 overflow-hidden position-relative' style={{ aspectRatio: "16/16" }}>
+                                <Image alt='product-img' src="/images/default-product.webp" objectFit="cover" layout="fill" width={1080} height={720} />
+                                {/* <p className='text-white' style={{ zIndex: 1 }}>{item?._id}</p> */}
                               </div>
                             </div>
                           </div>
