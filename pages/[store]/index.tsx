@@ -141,7 +141,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                   {menuData.map(item => (
                     <li key={item.title} className={`nav-item ${id === item.title ? 'border-bottom border-2 border-primary' : ''}`}>
                       <Link passHref shallow replace href={`#${item.title}`} as={{ href: `/${router.query?.store}`, hash: `#${item.title}` }}>
-                        <a className={`nav-link fs-6 fw-semibold ${id === item.title ? 'active' : 'text-dark'}`} >
+                        <a className={`nav-link text-capitalize fs-6 fw-semibold ${id === item.title ? 'active' : 'text-dark'}`} >
                           {item.title}
                         </a>
                       </Link>
@@ -152,7 +152,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
               {menuData.map((section, key) => (
                 <div key={section?._id} className="row g-1 g-md-3">
                   <div className="col-12 py-3">
-                    <h4 className='anchor text-muted' id={section.title} >{section.title}</h4>
+                    <h4 className='anchor text-capitalize opacity-50 text-muted' id={section.title} >{section.title}</h4>
                   </div>
                   <div className="col-12">
                     <div className="row g-1 g-md-3">

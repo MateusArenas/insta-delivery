@@ -79,7 +79,9 @@ React.useEffect(() => {
             <div className="py-2 border rounded px-3 py-1 h-100">
                 <div className="d-flex flex-row align-items-center justify-content-between w-100">
                   <div className='d-flex align-items-center'>
-                    <div className='rounded-circle bg-secondary me-2' style={{ width: 32, height: 32 }} /> 
+                    <div className='rounded-3 bg-secondary position-relative overflow-hidden me-2' style={{ width: 42, height: 42 }} >
+                      <Image alt='store-avatar-img' src="/images/default-store-avatar.webp" objectFit="cover" layout="fill" width={900} height={900} />
+                    </div>
                     <h6 className='mb-0'>Habibis</h6>
                   </div>
 

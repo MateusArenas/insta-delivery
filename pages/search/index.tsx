@@ -46,9 +46,22 @@ const SearchEmpty: NextPage = () => {
             href={`/search/${item?.name}`}
           >
             <a className='col-6 col-md-6 col-lg-4 text-decoration-none' onClick={() => {}} >
-              <div className='d-flex bg-secondary rounded-desktop-only w-100 h-auto' style={{ aspectRatio: "16/9" }}>
-                <h5 className='text-white p-4'>{item?.name}</h5>
+              {/* <div className='d-flex bg-secondary rounded-desktop-only w-100 h-auto position-relative overflow-hidden' style={{ aspectRatio: "16/9" }}>
+                <div className="d-flex flex-fill p-2 p-md-3 p-lg-4 position-relative" style={{ zIndex: 1 }}>
+                  <div className="h-100" />
+                  <h5 className='text-white'>{item?.name}</h5>
+                </div>
+              </div> */}
+
+              <div className="card border text-bg-dark rounded-desktop-only w-100 h-auto position-relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                <Image className="opacity-50" alt='category-img' src="/images/default-category.webp" objectFit="cover" layout="fill" width={331} height={143} />
+                <div className="card-img-overlay">
+                  <h5 className="card-title">{item?.name}</h5>
+                  {/* <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> */}
+                  {/* <p className="card-text">Last updated 3 mins ago</p> */}
+                </div>
               </div>
+
             </a>
           </Link>
         ))}

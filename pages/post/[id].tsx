@@ -93,14 +93,14 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
                 <p className="card-text">Favorited by <strong>ambaracadia</strong> and <strong>51</strong> others</p>
                 <p className="card-text"><strong>Habibis</strong> esse hamburger com batatas são uma escolha ideal.</p>
               </div>
-              <div className="card-footer border-0">
+              <div className="card-footer bg-transparent border-0">
                 <small className='opacity-50'>59 minutes ago</small>
               </div>
             </div>
 
             <div className={`col-12 order-1 ${vertical ? '' : 'col-lg-12 order-lg-3 mt-lg-3'} px-0 mt-0`}>
 
-              <div className={`card-header rounded ${vertical ? '' : 'border-desktop-only'}`}>
+              <div className={`card-header bg-transparent ${vertical ? '' : 'rounded-desktop-only border-desktop-only'}`}>
                 <div className="row">
 
                   <div className="col">
