@@ -13,6 +13,7 @@ interface SearchInputProps {
   debounce?: string
   onChangeText: (text: string) => any
   handleSubmit?: () => any
+  className?: string | undefined
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({ 
@@ -20,7 +21,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   suggestions=[],
   queryName='search',
   value, onChangeText, handleSubmit,
-  debounce,
+  debounce, className
 }) => {
 
   const inputRef = React.useRef(null)
@@ -31,7 +32,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   }
 
   return (
-    <Form onSubmit={onSubmit} className="d-flex align-items-center flex-grow-1 ms-3 me-5">
+    <Form onSubmit={onSubmit} className={`d-flex align-items-center flex-grow-1 ${className}`}>
       <Dropdown className='w-100' autoClose >
 
           <Button type='submit' onClick={() => value && onChangeText(value)} variant="link" className="position-absolute border-0 text-dark">

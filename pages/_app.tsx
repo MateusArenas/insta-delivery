@@ -21,6 +21,7 @@ import { BagProvider } from '../contexts/bag';
 import useSwicthPageShowCase from '../hooks/useSwitchPageShowCases';
 import useBreakpoint from '../hooks/useBreakpoint';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import CartStore from './cart/[storeName]';
 
 
 type NextPageWithLayout = NextPage & { getLayout?: (page: ReactElement) => ReactNode }
@@ -45,7 +46,8 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   useSwicthPageShowCase({
     isPresentation: ['lg', 'xl', 'xxl'].includes(breakpoint),
     isPage: ['md', 'sm', 'xs'].includes(breakpoint),
-    paths: ['/cart', '/andress'],
+    // paths: ['/cart', '/andress'],
+    paths: [],
     options: { queryKey: 'open' }
   })
 
@@ -66,18 +68,14 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered 
           className='open-master' backdropClassName='open-master-bg'
           show={(router.query?.open === 'andress') as unknown as boolean} 
-            onHide={() => router.replace({ 
-              pathname: router.pathname, 
-              query: removeQuery(router.query, 'open')
-            }, {
-              pathname: removeParameterFromUrl(router.asPath, 'open'),
-              query: {}
-            }, { shallow: true }
-          )}
+          onHide={() => router.back()}
+          onShow={() => ModalRef.current?.scrollTo?.({ top: 0, behavior: "smooth" })}
+          scrollable
+          fullscreen={'lg-down'}
         >
-          <Modal.Header className='border-0' closeButton />
-          <Modal.Body>
-            <Andress />
+          {/* <Modal.Header className='border-0' closeButton /> */}
+          <Modal.Body className='p-0'>
+            <Andress presentation />
           </Modal.Body>
         </Modal>
 
@@ -94,8 +92,8 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
         {/* offcanvas for post */}
         <Modal tabindex aria-labelledby="contained-modal-title-vcenter" centered style={{ zIndex: 1 }}
-          className='open-bellow header-offset-divided-down-lg px-0' 
-          backdropClassName='open-bellow-bg header-offset-divided-down-lg' 
+          className='open-master px-0' 
+          backdropClassName='open-master-bg' 
           show={router.query.postId as unknown as boolean} 
           onHide={() => router.back()}
           onShow={() => ModalRef.current?.scrollTo?.({ top: 0, behavior: "smooth" })}
@@ -106,30 +104,26 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           previousId={posts[posts?.findIndex(post => post?._id === router.query.postId)-1]?._id}
           scrollable
         >
-          <Modal.Body ref={ModalRef} className='p-0 m-0'>
+          <Modal.Body ref={ModalRef} className='pt-0 px-0 m-0 bottom-tab-content-offset'>
             <Post {...(posts?.find(post => post?._id === router.query.postId) || {})} component />
           </Modal.Body>
         </Modal>
 
         {/* offcanvas for cart */}
         <Offcanvas tabindex={-1} placement={'end'} 
-          className='header-offset open-master' 
+          className='header-offset open-master w-mobile-100' 
           backdropClassName='open-master-bg' 
           show={(router.query?.open === 'cart') as unknown as boolean} 
-          onHide={() => router.replace({ 
-              pathname: router.pathname, 
-              query: removeQuery(router.query, 'open')
-            }, {
-              pathname: removeParameterFromUrl(router.asPath, 'open'),
-              query: {}
-            }, { shallow: true }
-          )}
+          onHide={() => router.back()}
+          scroll={false} backdrop
         >
-          <div className='d-flex flex-row'>
-            <Offcanvas.Header className='border-0 mb-4 position-absolute'  closeButton />
+          <div className='d-flex flex-row h-100'>
+            <Offcanvas.Header className='border-0 mb-4 position-absolute d-none d-lg-inline'  closeButton />
+            <Offcanvas.Header className='border-0 mb-4 position-absolute end-0 d-lg-none'  closeButton />
 
-            <div className="d-flex flex-column mx-4">
-              <Cart />
+            <div className="d-flex flex-column w-100 h-100 px-3 mx-4">
+              {!router.query?.storeName && <Cart />}
+              {router.query?.storeName && <CartStore />}
             </div>
           </div>
         </Offcanvas>
@@ -163,7 +157,7 @@ const CustomModalDialog: React.FC<CustomModalDialogProps> = ({ children, nextId,
   const router = useRouter()
   return (
     <>
-      <CloseButton style={{ zIndex: 1 }} className='position-absolute header-offset-divided-down-lg end-0 m-3 rounded-circle bg-white p-2 d-none d-lg-block' 
+      <CloseButton style={{ zIndex: 1 }} className='position-absolute header-offset end-0 m-3 rounded-circle bg-white p-2 d-none d-lg-block' 
           onClick={() => router.back()}
       />
 
@@ -171,7 +165,7 @@ const CustomModalDialog: React.FC<CustomModalDialogProps> = ({ children, nextId,
         href={{ pathname: router.pathname, query: { ...router.query, postId: nextId } }}
         as={`/post/${nextId}`}
       >
-        <Button disabled={!nextId} as={'a'} style={{ zIndex: 1 }} className='position-absolute text-dark end-0 top-50 mx-3 rounded-circle bg-white py-2 px-2 d-none d-lg-block' >
+        <Button variant='light' disabled={!nextId} as={'a'} style={{ zIndex: 1 }} className='position-absolute text-dark end-0 top-50 mx-3 rounded-circle bg-white py-2 px-2 d-none d-lg-block' >
           <MdChevronRight size={24} style={{ top: -2 }} />
         </Button>
       </Link>}
@@ -180,7 +174,7 @@ const CustomModalDialog: React.FC<CustomModalDialogProps> = ({ children, nextId,
         href={{ pathname: router.pathname, query: { ...router.query, postId: previousId } }}
         as={`/post/${previousId}`}
       >
-        <Button disabled={!previousId} as={'a'} style={{ zIndex: 1 }} className='position-absolute text-dark start-0 top-50 mx-3 rounded-circle bg-white py-2 px-2 d-none d-lg-block' >
+        <Button variant='light' disabled={!previousId} as={'a'} style={{ zIndex: 1 }} className='position-absolute text-dark start-0 top-50 mx-3 rounded-circle bg-white py-2 px-2 d-none d-lg-block' >
           <MdChevronLeft size={24} style={{ top: -2 }} />
         </Button>
       </Link>}

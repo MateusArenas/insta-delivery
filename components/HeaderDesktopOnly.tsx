@@ -1,15 +1,14 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router';
+import Router from 'next/router'
 import React from 'react'
 import { Button, Container, Dropdown, Form, FormControlProps, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { IoBagOutline, IoEnterOutline } from 'react-icons/io5';
 import { MdChevronRight, MdExpandMore, MdHelpOutline, MdHistory, MdOutlineAccountCircle, MdPersonOutline } from 'react-icons/md';
 import { RiSearchLine } from 'react-icons/ri';
 
-import Router from 'next/router'
-
+import { useDebounce, useDebounceState } from '../hooks/useDebounce';
 import SearchInput from './SearchInput';
-import { useDebounceState, useDebounce } from '../hooks/useDebounce';
 
 function HeaderDesktopOnly(props: any) {
 
@@ -33,22 +32,10 @@ function HeaderDesktopOnly(props: any) {
 
           <Nav className="">
 
-            <Link passHref 
-              // href={{
-              //   pathname: router.pathname,
-              //   // query: { ...router.query, open: router.query?.['open'] === 'andress' ? undefined : 'andress' },
-              //   query: router.query?.['open'] === 'andress' ? removeQuery(router.query, 'open') : { ...router.query, open: 'andress' } ,
-              // }}
-              // as={`${removeParameterFromUrl(router.asPath, 'open')}?open=andress`}
-              href={{
-                pathname: router.pathname,
-                query: router.query?.['open'] === 'andress' ? removeQuery(router.query, 'open') : { ...router.query, open: 'andress' },
-              }}
-              as={{ 
-                pathname: router.query?.['open'] ? removeParameterFromUrl(router.asPath, 'open') : router.asPath,
-                query: router.query?.['open'] === 'andress' ? {} : { open: 'andress' },
-              }}
-              replace
+            <Link passHref shallow
+              href={{ pathname: router.pathname, query: { ...router.query, open: 'andress' } }}
+              as={`/andress`}
+              scroll={false}
             >
               <Nav.Link 
                 disabled={router.pathname === '/andress'} 
@@ -77,7 +64,7 @@ function HeaderDesktopOnly(props: any) {
             
           </Nav>
 
-          <SearchInput value={search} onChangeText={setSearch}
+          <SearchInput className={`ms-3 me-5`} value={search} onChangeText={setSearch}
             handleSubmit={() => router.push(`/search/${search}`, undefined, { shallow: true })}
             history={['oi', 'hamburger']}
             debounce={debounce}
@@ -110,21 +97,28 @@ function HeaderDesktopOnly(props: any) {
             {/* </Nav.Link> */}
 
 
-            <Link shallow passHref
-              href={{
-                pathname: router.pathname,
-                query: router.query?.['open'] === 'cart' ? removeQuery(router.query, 'open') : { ...router.query, open: 'cart' },
-              }}
-              as={{ 
-                pathname: router.query?.['open'] ? removeParameterFromUrl(router.asPath, 'open') : router.asPath,
-                query: router.query?.['open'] === 'cart' ? {} : { open: 'cart' },
-              }}
-              replace
-              // eventKey={2} 
+            <Link shallow passHref // eventKey={2}
+              href={{ pathname: router.pathname, query: { ...router.query, open: 'cart' } }}
+              as={`/cart`}
+              scroll={false}
             >
-              <Nav.Link 
-                disabled={router.pathname === '/cart'} 
-                active={router.pathname === '/cart'}
+              <Nav.Link onClick={async e => {
+                if (router.query?.store) { 
+                  e.preventDefault()
+                  await router.push(
+                    { pathname: router.pathname, query: { ...router.query, open: 'cart' } },
+                    `/cart`,
+                    { shallow: true, scroll: false }
+                  )
+                  await router.push(
+                    { pathname: router.pathname, query: { ...router.query, open: 'cart', storeName: router.query.store } },
+                    `/cart/${router.query.store}`,
+                    { shallow: true, scroll: false }
+                  )
+                }
+              }}
+                disabled={router.pathname.includes('/cart')} 
+                active={router.pathname.includes('/cart')}
                 className={`d-flex align-items-center mx-2`}
               >
                 <IoBagOutline size={24} />
