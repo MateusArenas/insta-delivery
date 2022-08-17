@@ -90,7 +90,6 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
               <div className="card-footer border-0">
                 <small className='opacity-50'>59 minutes ago</small>
               </div>
-              <p>id: {_id}</p>
             </div>
 
             <div className={`col-12 order-1 ${vertical ? '' : 'col-lg-12 order-lg-3 mt-lg-3'} px-0 mt-0`}>
