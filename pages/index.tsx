@@ -37,12 +37,12 @@ const Home: NextPage = () => {
       <Navbar style={{ zIndex: 1 }} sticky='top' bg='white' className='border-bottom d-lg-none align-items-center' expand="sm">
         <Container className='h-100 align-items-center justify-content-start position-relative'>
 
-          <Link passHref href='/' replace >
-            <Navbar.Brand className='me-0' onClick={() => {}} >
-              insta-delivery
-            </Navbar.Brand>
-          </Link> 
-          <NavDropdown className='not-arrow mx-2' title={<MdExpandMore className='opacity-75' size={16} />}  id="collasible-nav-dropdown">
+          <NavDropdown className='not-arrow mx-2' title={
+              <Navbar.Brand as="div" className='me-0' >
+                <span className='me-1'>insta-delivery</span>
+                <MdExpandMore className='opacity-75' size={16} />
+              </Navbar.Brand>
+          }  id="collasible-nav-dropdown">
               <ol className="list-group list-group-flush px-2">
                 {[
                     { Icon: MdOutlineHome, name: 'Home', href: '/' },
