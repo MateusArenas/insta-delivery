@@ -128,7 +128,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
           <Tabs id="uncontrolled-tab-example"
             defaultActiveKey="menu"
             className="mb-3" 
-            style={{ zIndex: 1 }}
+            // style={{ zIndex: 1 }}
           >
             <Tab eventKey="menu" title="Cardápio">
               <Scrollspy items={menuData.map(item => item.title)} className="navbar sticky-top header-offset-top bg-white border-bottom px-3 pb-0 mb-3"
@@ -151,17 +151,17 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
               </Scrollspy >
               {menuData.map((section, key) => (
                 <div key={section?._id} className="row g-1 g-md-3">
-                  <div className="col-12 py-3">
+                  <div className="col-12 py-3" style={{ zIndex: -1 }}>
                     <h4 className='anchor text-capitalize opacity-50 text-muted' id={section.title} >{section.title}</h4>
                   </div>
-                  <div className="col-12">
+                  <div className="col-12" >
                     <div className="row g-1 g-md-3">
                       {section.items.map((item, key) => (
                         <Link key={key}  passHref shallow 
                           href={{ pathname: router.pathname, query: { ...router.query, productId: item?._id } }}
                           as={`/product/${item?._id}`}
                           >
-                          <a key={key} className='col-12 col-md-6 col-lg-4 text-decoration-none'
+                          <a key={key} className='col-12 col-md-6 col-lg-4 text-decoration-none hover-bump'
                             onClick={async (e) => {
                               e.preventDefault()
                               setId(section.title)
@@ -201,7 +201,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                       href={{ pathname: router.pathname, query: { ...router.query, postId: item?._id } }}
                       as={`/post/${item?._id}`}
                     >
-                      <a className='col-6 col-md-4 col-lg-3 text-decoration-none' onClick={() => setMemoryPosts(data)} >
+                      <a className='col-6 col-md-6 col-lg-4 text-decoration-none hover-bump' onClick={() => setMemoryPosts(data)} >
                         <div className='d-flex align-items-center justify-content-center bg-secondary rounded-desktop-only w-100 h-auto position-relative overflow-hidden' style={{ aspectRatio: "16/9" }}>
                           {/* <p className='text-white'>{item?._id}</p> */}
                           <Image alt='post-img' src="/images/default-post.jpg" objectFit='cover' layout="fill" width={1080} height={566}  />

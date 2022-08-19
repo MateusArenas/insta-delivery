@@ -45,14 +45,7 @@ const SearchEmpty: NextPage = () => {
           <Link key={key}  passHref shallow 
             href={`/search/${item?.name}`}
           >
-            <a className='col-6 col-md-6 col-lg-4 text-decoration-none' onClick={() => {}} >
-              {/* <div className='d-flex bg-secondary rounded-desktop-only w-100 h-auto position-relative overflow-hidden' style={{ aspectRatio: "16/9" }}>
-                <div className="d-flex flex-fill p-2 p-md-3 p-lg-4 position-relative" style={{ zIndex: 1 }}>
-                  <div className="h-100" />
-                  <h5 className='text-white'>{item?.name}</h5>
-                </div>
-              </div> */}
-
+            <a className='col-6 col-md-6 col-lg-4 text-decoration-none hover-bump' onClick={() => {}} >
               <div className="card border text-bg-dark rounded-desktop-only w-100 h-auto position-relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
                 <Image className="opacity-50" alt='category-img' src="/images/default-category.webp" objectFit="cover" layout="fill" width={331} height={143} />
                 <div className="card-img-overlay">
@@ -61,7 +54,6 @@ const SearchEmpty: NextPage = () => {
                   {/* <p className="card-text">Last updated 3 mins ago</p> */}
                 </div>
               </div>
-
             </a>
           </Link>
         ))}

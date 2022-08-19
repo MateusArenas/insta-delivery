@@ -7,10 +7,14 @@ import Link from 'next/link'
 import React from 'react'
 
 import { Button, CloseButton } from 'react-bootstrap'
-import { MdChevronLeft } from 'react-icons/md' 
+import { MdChevronLeft, MdLocalActivity, MdMyLocation } from 'react-icons/md' 
 import { useRouter } from 'next/router'
+import SearchInput from '../components/SearchInput'
+import { useDebounce } from '../hooks/useDebounce'
 
 const Andress: NextPage<any> = ({ presentation }) => {
+  const [search, setSearch] = React.useState<string>('')
+  const debounce = useDebounce(search, 1000)
 
   const router = useRouter()
 
@@ -43,6 +47,24 @@ const Andress: NextPage<any> = ({ presentation }) => {
       />}
 
       <h4 className="text-center my-5" >Onde você quer receber seu pedido?</h4>
+
+      <div className="row mt-4 mb-3 mx-5 px-5">
+        <SearchInput className='m-0 p-0' 
+          placeholder={'Buscar endereço e número'}
+          value={search} onChangeText={setSearch}
+          handleSubmit={() => router.push(`/search/${search}`, undefined, { shallow: true })}
+          history={['oi', 'hamburger']}
+          debounce={debounce}
+          suggestions={['hamburger', 'habibgs']}
+        />
+      </div>
+
+      <div className="row mt-3 mb-4 mx-5 px-5">
+        <Button variant='outline-secondary text-start' className='' >
+          <MdMyLocation size={24} />
+          <span className='ms-2 align-text-top'>Usar minha localização</span>
+        </Button>
+      </div>
 
       <div className="text-center mb-5">
         <p>Já tem um endereço salvo?</p>

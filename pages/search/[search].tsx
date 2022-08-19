@@ -43,91 +43,42 @@ const Search: NextPage = () => {
 
       <div className='row g-1 g-md-3 mt-4'>
         {[
-          { _id: '1', items: [{ _id: '1item-1' }, { _id: '1item-2' }, { _id: '1item-3' }] },
-          { _id: '2', items: [{ _id: '2item-1' }, { _id: '2item-2' }, { _id: '2item-3' }] },
-        ].map((section, key) => (
-          <div key={section._id} className="col-12">
-            <div className="card">
-
-              <div className={`card-header`}>
-                  <div className="row">
-
-                    <div className="col">
-                      <Link passHref shallow href={`/${'mateus'}`}>
-                        <a className="d-flex h-100 flex-row align-items-center text-decoration-none">
-                          <div  className="bg-secondary rounded-3 position-relative overflow-hidden" style={{ height: 42, width: 42 }} >
-                            <Image alt='product-img' src="/images/default-store-avatar.webp" objectFit="cover" layout="fill" width={900} height={900} />
-                          </div>
-                          <h6 className="card-title ms-2 mb-0">Card title</h6>
-                        </a>
-                      </Link>
+          { _id: '1' },
+          { _id: '2' },
+          { _id: '3' },
+          { _id: '4' },
+          { _id: '5' },
+          { _id: '6' },
+        ].map((item, key) => (
+          <Link key={item._id}  passHref shallow 
+            href={{ pathname: router.pathname, query: { ...router.query, productId: item?._id } }}
+            as={`/product/${item?._id}`}
+          >
+            <a className='col-12 col-md-6 col-lg-4 text-decoration-none hover-bump'>
+              <div className="card mb-3 overflow-hiden text-dark">
+                <div className="row g-0">
+                  <div className="col-7 col-md-6">
+                    <div className="card-body">
+                      <h6 className="card-title">Hamburger</h6>
+                      <p className="card-text text-muted text-ellipsis-2">Pão Brioche, hamburguer artesanal de 140g, queijo prato, bacon crocante, molho barbecue , cebola roxa, alface e maionese hellmans .</p>
+                      <p className="card-text"><strong className="text-success">R$ 22,99</strong></p>
                     </div>
-
-                    <div className="col">
-                      <div className="d-flex h-100 flex-row align-items-center justify-content-end">
-                        <button  className="btn btn-outline-primary fw-semibold me-2">Favorite</button>
-                        <Dropdown className='not-arrow'>
-                          <Dropdown.Toggle 
-                            as={Button}
-                            variant="transparent" id="dropdown-basic" className='rounded-circle px-2'
-                          >
-                            <MdMoreHoriz size={24} />
-                          </Dropdown.Toggle>
-
-                          <Dropdown.Menu >
-                            <Dropdown.Item className=' text-danger' href="#/action-3"><strong>Denunciar</strong></Dropdown.Item>
-                            <Dropdown.Divider />
-                            <Dropdown.Item className=' text-danger' href="#/action-2"><strong>Desfavoritar</strong></Dropdown.Item>
-                            <Dropdown.Divider />
-                            <Link passHref href={`/post/${'abc1234'}`}>
-                              <Dropdown.Item>Ir para publicação</Dropdown.Item>
-                            </Link>
-                            <Dropdown.Divider />
-                            <Dropdown.Item href="#/action-1">Copiar link</Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
-                      </div>
+                  </div>
+                  <div className="col-5 col-md-6">
+                    <div className='d-flex align-items-center justify-content-center bg-secondary rounded-end w-100 h-100 overflow-hidden position-relative' style={{ aspectRatio: "16/16" }}>
+                      <Image alt='product-img' src="/images/default-product.webp" objectFit="cover" layout="fill" width={1080} height={720} />
+                      {/* <p className='text-white' style={{ zIndex: 1 }}>{item?._id}</p> */}
                     </div>
-
                   </div>
                 </div>
-
-              <div className="card-body">
-                <div className="row">
-                  {section.items.map(item => (
-                    <Link key={key}  passHref shallow 
-                      href={{ pathname: router.pathname, query: { ...router.query, productId: item?._id } }}
-                      as={`/product/${item?._id}`}
-                    >
-                      <a key={key} className='col-12 col-md-6 col-lg-4 text-decoration-none'>
-                        <div className="card mb-3 overflow-hiden text-dark">
-                          <div className="row g-0">
-                            <div className="col-7 col-md-6">
-                              <div className="card-body">
-                                <h6 className="card-title">Hamburger</h6>
-                                <p className="card-text text-muted text-ellipsis-2">Pão Brioche, hamburguer artesanal de 140g, queijo prato, bacon crocante, molho barbecue , cebola roxa, alface e maionese hellmans .</p>
-                                <p className="card-text"><strong className="text-success">R$ 22,99</strong></p>
-                              </div>
-                            </div>
-                            <div className="col-5 col-md-6">
-                              <div className='d-flex align-items-center justify-content-center bg-secondary rounded-end w-100 h-100 overflow-hidden position-relative' style={{ aspectRatio: "16/16" }}>
-                                <Image alt='product-img' src="/images/default-product.webp" objectFit="cover" layout="fill" width={1080} height={720} />
-                                {/* <p className='text-white' style={{ zIndex: 1 }}>{item?._id}</p> */}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </Link>
-                  ))}
-                </div>
               </div>
-              <div className="card-footer text-center">
-                <Button variant="link" onClick={() => {}} className="text-decoration-none fw-semibold">Ver mais</Button>
-              </div>
-            </div>
-          </div>  
+            </a>
+          </Link>
         ))}
+      </div>
+
+      <div className="row">
+        <Button variant="link" onClick={() => {}} className="text-decoration-none fw-semibold">Ver mais</Button>
       </div>
 
     </div>

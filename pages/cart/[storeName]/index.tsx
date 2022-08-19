@@ -102,7 +102,9 @@ const CartStore: NextPage = () => {
               </div>
 
             </div>
-            <Button variant='primary' className='py-lg-2' >Forma de pagamento</Button>
+            <Link passHref shallow href={`/cart/${router.query?.storeName}/checkout`} >
+              <Button as="a" variant='primary' className='py-lg-2' >Forma de pagamento</Button>
+            </Link>
           </div>
         </div>
       </div>

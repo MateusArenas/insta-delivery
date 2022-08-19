@@ -126,9 +126,9 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu >
-                          <Dropdown.Item className=' text-danger' href="#/action-3"><strong>Denunciar</strong></Dropdown.Item>
+                          <Dropdown.Item className='text-danger fw-semibold' href="#/action-3">Denunciar</Dropdown.Item>
                           <Dropdown.Divider />
-                          <Dropdown.Item className=' text-danger' href="#/action-2"><strong>Desfavoritar</strong></Dropdown.Item>
+                          <Dropdown.Item className='text-danger fw-semibold' href="#/action-2">Desfavoritar</Dropdown.Item>
                           <Dropdown.Divider />
                           <Link passHref href={`/post/${'abc1234'}`}>
                             <Dropdown.Item>Ir para publicação</Dropdown.Item>
@@ -159,7 +159,7 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
               href={{ pathname: router.pathname, query: { ...router.query, postId: memoryPost?._id } }}
               as={`/post/${memoryPost?._id}`}
             >
-              <a className='col-12 col-md-6 col-lg-4 text-decoration-none' onClick={handlePost} >
+              <a className='col-12 col-md-6 col-lg-4 text-decoration-none hover-bump' onClick={handlePost} >
                 <div className='d-flex align-items-center justify-content-center bg-secondary rounded-desktop-only w-100 h-auto position-relative overflow-hidden' style={{ aspectRatio: "16/9" }}>
                   {/* <p className='text-white'>{memoryPost?._id}</p> */}
                   <Image alt='post-img' src="/images/default-post.jpg" objectFit='cover' layout="fill" width={1080} height={566}  />

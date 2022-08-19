@@ -9,6 +9,7 @@ import { RiSearchLine } from 'react-icons/ri';
 
 import { useDebounce, useDebounceState } from '../hooks/useDebounce';
 import SearchInput from './SearchInput';
+import Account from '../pages/account';
 
 function HeaderDesktopOnly(props: any) {
 
@@ -21,7 +22,7 @@ function HeaderDesktopOnly(props: any) {
   const debounce = useDebounce(search, 1000)
 
   return (
-    <Navbar style={{ zIndex: 1 }} sticky='top' bg='white' className='border-bottom d-none d-lg-block align-items-center header-height' collapseOnSelect expand="md">
+    <Navbar style={{ zIndex: 3 }} sticky='top' bg='white' className='border-bottom d-none d-lg-block align-items-center header-height' collapseOnSelect expand="md">
       <Container className='h-100'>
         
         <Link passHref href='/' replace >
@@ -76,7 +77,7 @@ function HeaderDesktopOnly(props: any) {
 
             {/* <IoEnterOutline size={24} /> */}
               <NavDropdown className='not-arrow mx-2' title={<MdOutlineAccountCircle size={24} />}  id="collasible-nav-dropdown">
-                <div className="p-4">
+                {/* <div className="p-4">
                   <NavDropdown.Header>
                     <h5>Olá Mateus</h5>
                   </NavDropdown.Header>
@@ -91,7 +92,8 @@ function HeaderDesktopOnly(props: any) {
                     <span className='mx-3 me-5'>Entrar</span>
                     <MdChevronRight />
                   </NavDropdown.Item>
-                </div>
+                </div> */}
+                <Account />
               </NavDropdown>
 
             {/* </Nav.Link> */}

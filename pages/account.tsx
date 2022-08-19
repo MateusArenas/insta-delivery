@@ -4,7 +4,10 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
+import { Button } from 'react-bootstrap'
+
 import React from 'react'
+import { MdChevronRight, MdFavoriteBorder, MdHelp, MdLogout, MdOutlineFavorite, MdOutlineHelpOutline, MdOutlineShoppingBag, MdSecurity } from 'react-icons/md'
 
 const Account: NextPage = () => {
 
@@ -16,7 +19,33 @@ const Account: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h4 className="text-center my-5" >Account</h4>
+      <h4 className="text-center mt-4 mb-4 text-muted" >Olá Mateus</h4>
+
+      <hr />
+
+      <ol className="list-group list-group-flush">
+        {[
+          { Icon: MdFavoriteBorder, name: 'Favoritos' },
+          { Icon: MdOutlineShoppingBag, name: 'Pedidos' },
+          { Icon: MdSecurity, name: 'Segurança' },
+          { Icon: MdOutlineHelpOutline, name: 'Ajuda' },
+          { Icon: MdLogout, name: 'Sair' },
+        ].map(({ Icon, name }, key) => (
+          <li key={key} className="list-group-item p-0 border-0">
+            <Link passHref shallow href={'#'}>
+              <Button as="a" variant='link' className='d-flex my-1 justify-content-between align-items-center text-dark text-decoration-none px-3 py-3'>
+                <Icon size={24} />
+                <div className="ms-4 me-auto">
+                  <div className="fw-semibold">{name}</div>
+                  {/* Content for list item */}
+                </div>
+                {/* <span className="badge bg-primary rounded-pill">14</span> */}
+                <span className='ms-4'><MdChevronRight /></span>
+              </Button>
+            </Link>
+          </li>
+        ))}
+      </ol>
 
     </div>
   )

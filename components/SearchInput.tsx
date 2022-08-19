@@ -14,6 +14,7 @@ interface SearchInputProps {
   onChangeText: (text: string) => any
   handleSubmit?: () => any
   className?: string | undefined
+  placeholder?: string
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({ 
@@ -21,7 +22,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   suggestions=[],
   queryName='search',
   value, onChangeText, handleSubmit,
-  debounce, className
+  debounce, className, placeholder
 }) => {
 
   const inputRef = React.useRef(null)
@@ -42,6 +43,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
           <Dropdown.Toggle ref={inputRef}
             as={CustomToggleAndInputSearch} 
             id="dropdown-custom-components" 
+            placeholder={placeholder}
             value={value} onChange={(e: any) => onChangeText(e?.target?.value || '')}
           />
 
@@ -74,10 +76,10 @@ const SearchInput: React.FC<SearchInputProps> = ({
 export default SearchInput;
 
 // eslint-disable-next-line react/display-name
-const CustomToggleAndInputSearch = React.forwardRef(({ onClick, ...props }: any, ref) => ( 
+const CustomToggleAndInputSearch = React.forwardRef(({ onClick, placeholder, ...props }: any, ref) => ( 
   <Form.Control {...props}
     type='search' autocomplete="off"
-    placeholder="Busque por item ou loja"
+    placeholder={placeholder || "Busque por item ou loja"}
     className="me-2 ps-5"
     ref={ref}
     onClick={(e) => {

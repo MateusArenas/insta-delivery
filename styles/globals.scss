@@ -10,6 +10,15 @@ a {
   color: inherit;
   // text-decoration: none;
 }
+a.hover-bump {
+  transition: all .2s linear;
+}
+
+a.hover-bump:hover {
+  box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+  transform: scale(1.02);
+}
+
 
 .modal-backdrop.show, .offcanvas-backdrop.show {
   opacity: .1 !important;
@@ -63,19 +72,19 @@ a {
 
 
 .open-master {
-  z-index: 3 !important;
+  z-index: 7 !important;
 }
 
 .open-master-bg {
-  z-index: 2 !important;
+  z-index: 6 !important;
 }
 
 .open-bellow {
-  z-index: 1 !important;
+  z-index: 5 !important;
 }
 
 .open-bellow-bg {
-  z-index: 0 !important;
+  z-index: 4 !important;
 }
 
 .header-height {
@@ -164,11 +173,11 @@ hr {
 }
 
 .dropdown-menu {
-  z-index: 2 !important;
+  z-index: 4 !important;
 }
 
 .offcanvas-backdrop, .offcanvas-end {
-  z-index: 1 !important;
+  z-index: 4 !important;
 }
 
 .not-arrow .dropdown-toggle::after {
