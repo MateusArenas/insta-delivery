@@ -116,7 +116,7 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
 
                   <div className="col">
                     <div className="d-flex h-100 flex-row align-items-center justify-content-end">
-                      <button  className="btn btn-outline-primary fw-semibold me-2">Favorite</button>
+                      <Button variant="light" className="fw-semibold me-2">Favorite</Button>
                       <Dropdown className='not-arrow'>
                         <Dropdown.Toggle 
                           as={Button}
