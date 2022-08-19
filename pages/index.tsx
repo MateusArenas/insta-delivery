@@ -42,7 +42,7 @@ const Home: NextPage = () => {
               insta-delivery
             </Navbar.Brand>
           </Link> 
-          <NavDropdown className='not-arrow mx-2' title={<MdExpandMore size={16} />}  id="collasible-nav-dropdown">
+          <NavDropdown className='not-arrow mx-2' title={<MdExpandMore className='opacity-75' size={16} />}  id="collasible-nav-dropdown">
               <ol className="list-group list-group-flush px-2">
                 {[
                     { Icon: MdOutlineHome, name: 'Home', href: '/' },

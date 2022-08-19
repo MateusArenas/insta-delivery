@@ -29,7 +29,7 @@ function HeaderDesktopOnly(props: any) {
               insta-delivery
             </Navbar.Brand>
           </Link> 
-          <NavDropdown className='not-arrow mx-2' title={<MdExpandMore size={16} />}  id="collasible-nav-dropdown">
+          <NavDropdown className='not-arrow mx-2' title={<MdExpandMore className='opacity-75' size={16} />}  id="collasible-nav-dropdown">
               <ol className="list-group list-group-flush px-2">
                 {[
                     { Icon: MdOutlineHome, name: 'Home', href: '/' },
@@ -52,19 +52,6 @@ function HeaderDesktopOnly(props: any) {
                     </li>
                   ))}
               </ol>
-              {/* <div className="p-2">
-                <NavDropdown.Item className='d-flex flex-row align-items-center' href="#action/3.1">
-                  <MdOutlineHome />
-                  <span className='mx-3 me-auto'>Inicio</span>
-                  <span className='ms-4'><MdChevronRight /></span>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item className='d-flex flex-row align-items-center' href="#action/3.2">
-                  <MdFavoriteBorder />
-                  <span className='mx-3 me-auto'>Favoritos</span>
-                  <span className='ms-4'><MdChevronRight /></span>
-                </NavDropdown.Item>
-              </div> */}
             </NavDropdown>
 
           <Nav className="ms-2 col-3">
