@@ -100,7 +100,7 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
 
             <div className={`col-12 order-1 ${vertical ? '' : 'col-lg-12 order-lg-3 mt-lg-3'} px-0 mt-0`}>
 
-              <div className={`card-header bg-transparent ${vertical ? '' : 'rounded-desktop-only border-desktop-only'}`}>
+              <div className={`card-header px-2 bg-transparent ${vertical ? '' : 'rounded-desktop-only border-desktop-only'}`}>
                 <div className="row">
 
                   <div className="col">
