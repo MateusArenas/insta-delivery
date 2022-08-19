@@ -4,7 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
-import { Button } from 'react-bootstrap'
+import { Button, Dropdown } from 'react-bootstrap'
 
 import React from 'react'
 import { MdChevronRight, MdFavoriteBorder, MdHelp, MdLogout, MdOutlineFavorite, MdOutlineHelpOutline, MdOutlineShoppingBag, MdSecurity } from 'react-icons/md'
@@ -33,7 +33,7 @@ const Account: NextPage = () => {
         ].map(({ Icon, name }, key) => (
           <li key={key} className="list-group-item p-0 border-0">
             <Link passHref shallow href={'#'}>
-              <Button as="a" variant='link' className='d-flex my-1 justify-content-between align-items-center text-dark text-decoration-none px-3 py-3'>
+              <Dropdown.Item bsPrefix="none" as="a" className='btn btn-link d-flex my-1 justify-content-between align-items-center text-dark text-decoration-none px-3 py-3'>
                 <Icon size={24} />
                 <div className="ms-4 me-auto">
                   <div className="fw-semibold">{name}</div>
@@ -41,7 +41,7 @@ const Account: NextPage = () => {
                 </div>
                 {/* <span className="badge bg-primary rounded-pill">14</span> */}
                 <span className='ms-4'><MdChevronRight /></span>
-              </Button>
+              </Dropdown.Item>
             </Link>
           </li>
         ))}

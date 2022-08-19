@@ -48,7 +48,7 @@ const Andress: NextPage<any> = ({ presentation }) => {
 
       <h4 className="text-center my-5" >Onde você quer receber seu pedido?</h4>
 
-      <div className="row mt-4 mb-3 mx-5 px-5">
+      <div className="row mt-4 mb-3 mx-2 mx-lg-5 px-lg-5">
         <SearchInput className='m-0 p-0' 
           placeholder={'Buscar endereço e número'}
           value={search} onChangeText={setSearch}
@@ -59,7 +59,7 @@ const Andress: NextPage<any> = ({ presentation }) => {
         />
       </div>
 
-      <div className="row mt-3 mb-4 mx-5 px-5">
+      <div className="row mt-3 mb-4 mx-2 mx-lg-5 px-lg-5">
         <Button variant='outline-secondary text-start' className='' >
           <MdMyLocation size={24} />
           <span className='ms-2 align-text-top'>Usar minha localização</span>

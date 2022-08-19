@@ -3,9 +3,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import HeaderDesktopOnly from '../components/HeaderDesktopOnly'
 import styles from '../styles/Home.module.css'
-import { MdMoreHoriz, MdExpandMore } from 'react-icons/md';
+import { MdMoreHoriz, MdExpandMore, MdOutlineHome, MdFavoriteBorder, MdChevronRight } from 'react-icons/md';
 
-import { Offcanvas, CloseButton, Navbar, Nav, Container } from 'react-bootstrap';
+import { Offcanvas, CloseButton, Navbar, Nav, Container, NavDropdown, Dropdown } from 'react-bootstrap';
 
 import React from 'react'
 import Post from './post/[id]'
@@ -35,30 +35,56 @@ const Home: NextPage = () => {
 
 
       <Navbar style={{ zIndex: 1 }} sticky='top' bg='white' className='border-bottom d-lg-none align-items-center' expand="sm">
-        <Container className='h-100 align-items-center position-relative'>
+        <Container className='h-100 align-items-center justify-content-start position-relative'>
 
           <Link passHref href='/' replace >
-            <Navbar.Brand onClick={() => {}} >
+            <Navbar.Brand className='me-0' onClick={() => {}} >
               insta-delivery
             </Navbar.Brand>
           </Link> 
+          <NavDropdown className='not-arrow mx-2' title={<MdExpandMore size={16} />}  id="collasible-nav-dropdown">
+              <ol className="list-group list-group-flush px-2">
+                {[
+                    { Icon: MdOutlineHome, name: 'Home', href: '/' },
+                    { Icon: MdFavoriteBorder, name: 'Favoritos', href: '/?variant=favorites' },
+                  ].map(({ Icon, name, href }, key) => (
+                    <li key={key} className="list-group-item p-0">
+                      <Link passHref shallow href={href}>
+                        <Dropdown.Item bsPrefix="none" as="a" className='btn btn-link d-flex my-1 justify-content-between align-items-center text-dark text-decoration-none px-3 py-2'
+                          onClick={() => {}}
+                        >
+                          <Icon size={20} />
+                          <div className="ms-3 me-auto">
+                            <div className="fw-semibold">{name}</div>
+                            {/* Content for list item */}
+                          </div>
+                          {/* <span className="badge bg-primary rounded-pill">14</span> */}
+                          <span className='ms-4'><MdChevronRight /></span>
+                        </Dropdown.Item>
+                      </Link>
+                    </li>
+                  ))}
+              </ol>
+            </NavDropdown>
 
-            <Nav className="col">
+            <Nav className="col-6 mt-1 ms-auto">
 
-              <Link passHref shallow
-                href={{ pathname: router.pathname, query: { ...router.query, open: 'andress' } }}
-                as={`/andress`}
-                scroll={false}
-              >
-                <Nav.Link className='position-relative'
-                  disabled={router.pathname === '/andress'} 
-                  active={router.pathname === '/andress'}
-                  // onClick={props?.onOpenModal}
+                <Link passHref shallow
+                  href={{ pathname: router.pathname, query: { ...router.query, open: 'andress' } }}
+                  as={`/andress`}
+                  scroll={false}
                 >
-                  <span style={{ width: '95%', margin: 0 }} className='text-ellipsis-1'>Próximo de Jardim Maria Eneida </span>
-                  <MdExpandMore className='position-absolute end-0' style={{ top: 15 }} />
-                </Nav.Link>
-              </Link>              
+                  <Nav.Link className="position-relative pe-3"
+                    disabled={router.pathname === '/andress'} 
+                    active={router.pathname === '/andress'}
+                    // onClick={props?.onOpenModal}
+                  >
+                    <span className='text-ellipsis-1'>Próximo de Jardim Maria Eneida Rua Antonia de oliveira, n53</span>
+                    <span className="position-absolute top-50 end-0 translate-middle">
+                      <MdExpandMore />
+                    </span>
+                  </Nav.Link>
+                </Link>          
               
             </Nav>
 
