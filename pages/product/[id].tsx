@@ -148,7 +148,7 @@ React.useEffect(() => {
 
                   <hr className='d-block d-lg-none my-2 my-lg-3' />
 
-                  <div className="d-flex flex-row align-items-center justify-content-between w-100 d-block d-lg-none p-2">
+                  <div className="d-flex flex-row align-items-center justify-content-between w-100 d-block d-lg-none py-2">
                     <h6 className='mb-0'>30-40 min - <span className='text-success'>grátis</span></h6>
                   </div>
               </div>
