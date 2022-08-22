@@ -134,12 +134,16 @@ React.useEffect(() => {
             <div className="col-12 col-lg-6 order-2 order-lg-3 px-3 px-lg-0 mt-3 mt-lg-3">
               <div className="py-2 border rounded px-2 py-1">
                   <div className="d-flex flex-row align-items-center justify-content-between w-100">
-                    <div className='d-flex align-items-center'>
-                      <div className='rounded-3 bg-secondary position-relative overflow-hidden me-2' style={{ width: 42, height: 42 }} >
-                        <Image alt='store-avatar-img' src="/images/default-store-avatar.webp" objectFit="cover" layout="fill" width={900} height={900} />
-                      </div>
-                      <h6 className='mb-0'>Habibis</h6>
-                    </div>
+                    <Link passHref shallow href="/mateus">
+                      <a className='text-decoration-none'>
+                        <div className='d-flex align-items-center'>
+                          <div className='rounded-3 bg-secondary position-relative overflow-hidden me-2' style={{ width: 42, height: 42 }} >
+                            <Image alt='store-avatar-img' src="/images/default-store-avatar.webp" objectFit="cover" layout="fill" width={900} height={900} />
+                          </div>
+                          <h6 className='mb-0'>Habibis</h6>
+                        </div>
+                      </a>
+                    </Link>
 
                     <h6 className='mb-0 d-none d-lg-block py-2'>30-40 min - <span className='text-success'>grátis</span></h6>
 
