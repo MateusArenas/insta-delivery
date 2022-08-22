@@ -141,14 +141,14 @@ React.useEffect(() => {
                       <h6 className='mb-0'>Habibis</h6>
                     </div>
 
-                    <h6 className='mb-0 d-none d-lg-block'>30-40 min - <span className='text-success'>grátis</span></h6>
+                    <h6 className='mb-0 d-none d-lg-block py-2'>30-40 min - <span className='text-success'>grátis</span></h6>
 
                     <div className='d-flex align-items-center text-warning'><MdStar size={24} /> <h6 className='mb-0'>4.5</h6></div>
                   </div>
 
                   <hr className='d-block d-lg-none my-2 my-lg-3' />
 
-                  <div className="d-flex flex-row align-items-center justify-content-between w-100 d-block d-lg-none">
+                  <div className="d-flex flex-row align-items-center justify-content-between w-100 d-block d-lg-none p-2">
                     <h6 className='mb-0'>30-40 min - <span className='text-success'>grátis</span></h6>
                   </div>
               </div>
