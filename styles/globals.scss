@@ -2,9 +2,12 @@ html,
 body {
   // padding: 0;
   // margin: 0;
-  overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 a {
@@ -212,3 +215,13 @@ hr {
 //     background: black;
 //   }
 // }
+
+
+@media (min-width: 992px) {
+  .overflow-lg-auto {
+    overflow: auto!important;
+  }
+  .position-lg-absolute {
+    position: absolute!important;
+  }
+}

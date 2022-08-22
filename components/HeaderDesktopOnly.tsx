@@ -4,7 +4,7 @@ import Router from 'next/router'
 import React from 'react'
 import { Button, Container, Dropdown, Form, FormControlProps, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { IoBagOutline, IoEnterOutline } from 'react-icons/io5';
-import { MdChevronRight, MdExpandMore, MdFavoriteBorder, MdHelpOutline, MdHistory, MdHome, MdOutlineAccountCircle, MdOutlineHome, MdPersonOutline } from 'react-icons/md';
+import { MdChevronRight, MdExpandMore, MdFavoriteBorder, MdHelpOutline, MdHistory, MdHome, MdLogin, MdOutlineAccountCircle, MdOutlineHome, MdPersonOutline } from 'react-icons/md';
 import { RiSearchLine } from 'react-icons/ri';
 
 import { useDebounce, useDebounceState } from '../hooks/useDebounce';
@@ -22,7 +22,7 @@ function HeaderDesktopOnly(props: any) {
   const debounce = useDebounce(search, 1000)
 
   return (
-    <Navbar style={{ zIndex: 3 }} sticky='top' bg='white' className='border-bottom d-none d-lg-block align-items-center header-height' collapseOnSelect expand="md">
+    <Navbar style={{ zIndex: 3 }} sticky='top' bg='light' className='border-bottom d-none d-lg-block align-items-center header-height' collapseOnSelect expand="md">
       <Container className='h-100'>
           <Link passHref href='/' replace >
             <Navbar.Brand className='me-0' onClick={() => setSearch('')} >
@@ -46,7 +46,7 @@ function HeaderDesktopOnly(props: any) {
                             {/* Content for list item */}
                           </div>
                           {/* <span className="badge bg-primary rounded-pill">14</span> */}
-                          <span className='ms-4'><MdChevronRight /></span>
+                          <span className='ms-4 text-muted'><MdChevronRight /></span>
                         </Dropdown.Item>
                       </Link>
                     </li>
@@ -123,6 +123,19 @@ function HeaderDesktopOnly(props: any) {
 
             {/* </Nav.Link> */}
 
+            <Link shallow passHref href="/signin" // eventKey={2}
+              // href={{ pathname: router.pathname, query: { ...router.query, open: 'signin' } }}
+              // as={`/signin`}
+              scroll={false}
+            >
+              <Nav.Link
+                disabled={router.pathname.includes('/signin')} 
+                active={router.pathname.includes('/signin')}
+                className={`d-flex align-items-center mx-2`}
+              >
+                <MdLogin size={24} />
+              </Nav.Link>
+            </Link>
 
             <Link shallow passHref // eventKey={2}
               href={{ pathname: router.pathname, query: { ...router.query, open: 'cart' } }}

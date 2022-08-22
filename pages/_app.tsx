@@ -86,7 +86,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           scroll={false} backdrop
         >
           <Offcanvas.Body className='p-0'>
-            <Product presentation />
+            <Product presentation _id={'presentation: ' + router.query.productId} />
           </Offcanvas.Body>
         </Offcanvas>
 
@@ -110,22 +110,36 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         </Modal>
 
         {/* offcanvas for cart */}
-        <Offcanvas tabindex={-1} placement={'end'} 
-          className='header-offset open-master w-mobile-100' 
+        <Offcanvas 
+        // tabindex={-1} 
+          placement={['xs', 'sm', 'md'].includes(breakpoint) ? 'bottom' : 'end'} 
+          className={['xs', 'sm', 'md'].includes(breakpoint) ? "offcanvas-height-adapter open-master" : 'header-offset open-master w-mobile-100'}
           backdropClassName='open-master-bg' 
           show={(router.query?.open === 'cart') as unknown as boolean} 
           onHide={() => router.back()}
           scroll={false} backdrop
         >
-          <div className='d-flex flex-row h-100'>
+          <Offcanvas.Body className='p-0 ps-lg-4'>
+              {!router.query?.storeName && (
+                <>
+                  <CloseButton className='border-0 mb-4 position-absolute mt-4 d-none d-lg-block' 
+                    onClick={() => router.back()}
+                  />
+                  <CloseButton className='border-0 mb-4 position-absolute mt-4 d-lg-none end-0 me-4' 
+                    onClick={() => router.back()}
+                  />
+                </>
+              )}
+              {!router.query?.storeName && <Cart presentation />}
+              {router.query?.storeName && <CartStore />}
+          </Offcanvas.Body>
+          {/* <div className='d-flex flex-row h-100 w-100'>
             <Offcanvas.Header className='border-0 mb-4 position-absolute d-none d-lg-inline'  closeButton />
             <Offcanvas.Header className='border-0 mb-4 position-absolute end-0 d-lg-none'  closeButton />
 
             <div className="d-flex flex-column w-100 h-100 px-3 mx-4">
-              {!router.query?.storeName && <Cart />}
-              {router.query?.storeName && <CartStore />}
             </div>
-          </div>
+          </div> */}
         </Offcanvas>
 
       </BagProvider>

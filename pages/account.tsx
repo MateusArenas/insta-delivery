@@ -7,7 +7,8 @@ import Link from 'next/link'
 import { Button, Dropdown } from 'react-bootstrap'
 
 import React from 'react'
-import { MdChevronRight, MdFavoriteBorder, MdHelp, MdLogout, MdOutlineFavorite, MdOutlineHelpOutline, MdOutlineShoppingBag, MdSecurity } from 'react-icons/md'
+import { MdCardGiftcard, MdChevronRight, MdFavoriteBorder, MdHelp, MdLogout, MdOutlineFavorite, MdOutlineHelpOutline, MdOutlineShoppingBag, MdSecurity } from 'react-icons/md'
+import { IoMdCard } from 'react-icons/io'
 
 const Account: NextPage = () => {
 
@@ -27,6 +28,7 @@ const Account: NextPage = () => {
         {[
           { Icon: MdFavoriteBorder, name: 'Favoritos' },
           { Icon: MdOutlineShoppingBag, name: 'Pedidos' },
+          { Icon: IoMdCard, name: 'Planos' },
           { Icon: MdSecurity, name: 'Segurança' },
           { Icon: MdOutlineHelpOutline, name: 'Ajuda' },
           { Icon: MdLogout, name: 'Sair' },
@@ -40,7 +42,7 @@ const Account: NextPage = () => {
                   {/* Content for list item */}
                 </div>
                 {/* <span className="badge bg-primary rounded-pill">14</span> */}
-                <span className='ms-4'><MdChevronRight /></span>
+                <span className='ms-4 text-muted'><MdChevronRight /></span>
               </Dropdown.Item>
             </Link>
           </li>

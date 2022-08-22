@@ -54,7 +54,10 @@ const CartStore: NextPage = () => {
                     <p className="card-text fw-semibold">R$ 24, 99</p>
                   </div>
 
-                  <Link passHref shallow href={`/product/${item._id}`} >
+                  <Link passHref shallow 
+                    href={{ pathname: router.pathname, query: { ...router.query, productId: item?._id } }}
+                    as={`/product/${item?._id}`}
+                  >
                     <a className="card-link text-decoration-none text-primary fw-semibold">Ver Item</a>
                   </Link>
 
