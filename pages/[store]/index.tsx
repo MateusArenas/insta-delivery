@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 import React from 'react'
 import BagContext, { getId } from '../../contexts/bag'
-import { MdRemove, MdAdd, MdStar, MdMoreHoriz, MdLocalOffer, MdChevronLeft } from 'react-icons/md'
+import { MdRemove, MdAdd, MdStar, MdMoreHoriz, MdLocalOffer, MdChevronLeft, MdOutlineTimer } from 'react-icons/md'
 import { IoMdEye } from 'react-icons/io'
 
 import CloseButton from 'react-bootstrap/CloseButton';
@@ -194,7 +194,7 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                 </div>
               ))}
             </Tab>
-            <Tab eventKey="posts" title="Postagens">
+            <Tab eventKey="offers" title="Ofertas">
                 <div className="row g-1 g-md-3">
                   {data?.map((item, key) => (
                     <Link key={key}  passHref shallow 
@@ -205,6 +205,12 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                         <div className='d-flex align-items-center justify-content-center bg-secondary rounded-desktop-only w-100 h-auto position-relative overflow-hidden' style={{ aspectRatio: "16/9" }}>
                           {/* <p className='text-white'>{item?._id}</p> */}
                           <Image alt='post-img' src="/images/default-post.jpg" objectFit='cover' layout="fill" width={1080} height={566}  />
+                          <span className="badge bg-light position-absolute top-0 start-0 m-2">
+                            <p className='text-success m-0 fw-bold p-1'>50% off</p>
+                          </span>
+                          <span className="badge bg-light position-absolute bottom-0 end-0 m-2">
+                            <small className='text-primary fw-semibold'><MdOutlineTimer size={20} /> <span className='align-text-bottom'>1d</span></small>
+                          </span>
                         </div>
                       </a>
                     </Link>

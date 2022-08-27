@@ -220,6 +220,20 @@ hr {
 @media (min-width: 992px) {
   .overflow-lg-auto {
     overflow: auto!important;
+    overflow-x: hidden !important;
+    padding-right: 4px !important;
+  }
+  .overflow-lg-auto::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+  }
+  .overflow-lg-auto::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    background-color: var(--bs-border-color)!important;
+  }
+  .overflow-lg-auto::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: transparent;
   }
   .position-lg-absolute {
     position: absolute!important;

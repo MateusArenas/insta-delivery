@@ -7,11 +7,11 @@ import Image from 'next/image'
 
 import React from 'react'
 import BagContext, { getId } from '../../contexts/bag'
-import { MdRemove, MdAdd, MdStar, MdMoreHoriz, MdChevronLeft } from 'react-icons/md'
+import { MdRemove, MdAdd, MdStar, MdMoreHoriz, MdChevronLeft, MdExpandMore, MdExpandLess, MdTimelapse, MdOutlineTimer } from 'react-icons/md'
 import { IoMdEye } from 'react-icons/io'
 
 import CloseButton from 'react-bootstrap/CloseButton';
-import { Dropdown, Carousel } from 'react-bootstrap' 
+import { Dropdown, Carousel, Collapse } from 'react-bootstrap' 
 import { useRouter } from 'next/router'
 import { Button } from 'react-bootstrap'
 import { PresentationContext } from '../_app'
@@ -27,6 +27,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
   const router = useRouter()
+
+  const [open, setOpen] = React.useState(false);
 
   const { setMemoryPosts } = React.useContext(PresentationContext)
 
@@ -91,14 +93,56 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
 
             </div>
             
-            <div className={`col-12 order-3 ${vertical ? '' : 'col-lg-6 order-lg-2 px-lg-3'} mt-0 px-0`}>
-            <div className="card-body border-0">
-                <p className="card-text">Favorited by <strong>ambaracadia</strong> and <strong>51</strong> others</p>
-                <p className="card-text"><strong>Habibis</strong> esse hamburger com batatas são uma escolha ideal.</p>
-              </div>
-              <div className="card-footer bg-transparent border-0">
-                <small className='opacity-50'>59 minutes ago</small>
-              </div>
+            <div className={`col-12 d-flex flex-column position-relative h-auto order-3 ${vertical ? '' : 'col-lg-6 order-lg-2 px-lg-3'} mt-0 px-0`}>
+              <div className="card-body d-flex flex-column flex-fill px-0 pt-1 border-0">
+                  <Button variant='link' className='card-text text-dark text-decoration-none text-start px-3 mb-2 w-100'
+                    onClick={() => setOpen(open => !open)}
+                  >
+                    Contém <strong>Hamburger de Salada</strong> e <strong>2</strong> outros
+                    <span className='float-end text-muted'>
+                      {open ? <MdExpandLess size={20} /> : <MdExpandMore size={20} />}
+                    </span>
+                  </Button>
+                  <Collapse in={open} >
+                      <div className='flex-fill position-relative mx-1 mt-1 mb-3'>
+                        <div className={`row ${home ? '' : 'overflow-lg-auto position-lg-absolute'} h-100 w-100 g-1`}>
+                          {[{ _id: 1 }, { _id: 2 }, { _id: 3 }, { _id: 4 }, { _id: 5 }, { _id: 6 }, { _id: 7 }].map((item, key) => (
+                              <Link key={key}  passHref shallow 
+                                href={{ pathname: router.pathname, query: { ...router.query, productId: item?._id } }}
+                                as={`/product/${item?._id}`}
+                                >
+                                <a key={key} className='col-12 col-md-6 col-lg-6 text-decoration-none hover-bump'>
+                                  <div className="card overflow-hiden text-dark">
+                                    <div className="row g-0">
+                                      <div className="col-7 col-md-6">
+                                        <div className="card-body">
+                                          <h6 className="card-title">Hamburger</h6>
+                                          <p className="card-text text-muted text-ellipsis-2">Pão Brioche, hamburguer artesanal de 140g, queijo prato, bacon crocante, molho barbecue , cebola roxa, alface e maionese hellmans .</p>
+                                          <p className="card-text"><strong className="text-success">R$ 22,99</strong></p>
+                                        </div>
+                                      </div>
+                                      <div className="col-5 col-md-6">
+                                        <div className='d-flex align-items-center justify-content-center bg-secondary rounded-end w-100 h-100 position-relative overflow-hidden' style={{ aspectRatio: "16/16" }}>
+                                          {/* <p className='text-white'>{item?._id}</p> */}
+                                          <Image alt='product-img' src="/images/default-product.webp" objectFit="cover" layout="fill" width={1080} height={720} />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </a>
+                              </Link>
+                            ))}
+                        </div>
+                      </div>
+                  </Collapse>
+                  {/* <p className="card-text">Favorited by <strong>ambaracadia</strong> and <strong>51</strong> others</p> */}
+                  <p className="card-text mx-3"><strong>Habibis</strong> esse hamburger com batatas são uma escolha ideal.</p>
+                  <p className="card-text text-muted mx-3">Oferta de <span className='fw-semibold text-success'>50%</span> em qualquer produto acima.</p>
+                </div>
+                <div className="card-footer bg-transparent border-0">
+                  <small className='opacity-50'>59 minutes ago</small>
+                  <small className='text-primary fw-semibold float-end'><MdOutlineTimer size={20} /> <span className='align-text-top'>1d</span></small>
+                </div>
             </div>
 
             <div className={`col-12 order-1 ${vertical ? '' : 'col-lg-12 order-lg-3 mt-lg-3'} px-0 mt-0`}>
@@ -170,6 +214,12 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
                 <div className='d-flex align-items-center justify-content-center bg-secondary rounded-desktop-only w-100 h-auto position-relative overflow-hidden' style={{ aspectRatio: "16/9" }}>
                   {/* <p className='text-white'>{memoryPost?._id}</p> */}
                   <Image alt='post-img' src="/images/default-post.jpg" objectFit='cover' layout="fill" width={1080} height={566}  />
+                  <span className="badge bg-light position-absolute top-0 start-0 m-2">
+                    <p className='text-success m-0 fw-bold p-1'>50% off</p>
+                  </span>
+                  <span className="badge bg-light position-absolute bottom-0 end-0 m-2">
+                    <small className='text-primary fw-semibold'><MdOutlineTimer size={20} /> <span className='align-text-bottom'>1d</span></small>
+                  </span>
                 </div>
               </a>
             </Link>
