@@ -205,11 +205,11 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                         <div className='d-flex align-items-center justify-content-center bg-secondary rounded-desktop-only w-100 h-auto position-relative overflow-hidden' style={{ aspectRatio: "16/9" }}>
                           {/* <p className='text-white'>{item?._id}</p> */}
                           <Image alt='post-img' src="/images/default-post.jpg" objectFit='cover' layout="fill" width={1080} height={566}  />
-                          <span className="badge bg-light position-absolute top-0 start-0 m-2">
-                            <p className='text-success m-0 fw-bold p-1'>50% off</p>
+                          <span className="badge bg-light position-absolute top-0 start-0 m-1 m-md-2">
+                            <small className='text-success fw-bold py-1'>50% off</small>
                           </span>
-                          <span className="badge bg-light position-absolute bottom-0 end-0 m-2">
-                            <small className='text-primary fw-semibold opacity-50'><MdOutlineTimer size={20} /> <span className='align-text-bottom'>1d</span></small>
+                          <span className="badge bg-light position-absolute bottom-0 end-0 m-1 m-md-2">
+                            <small className='text-primary fw-bold opacity-50'><MdOutlineTimer size={16} /> <span className='align-text-bottom'>1d</span></small>
                           </span>
                         </div>
                       </a>
