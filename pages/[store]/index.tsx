@@ -206,10 +206,10 @@ const Store: NextPage<any> = ({ vertical, component, className }) => {
                           {/* <p className='text-white'>{item?._id}</p> */}
                           <Image alt='post-img' src="/images/default-post.jpg" objectFit='cover' layout="fill" width={1080} height={566}  />
                           <span className="badge bg-light position-absolute top-0 start-0 m-2">
-                            <p className='text-success m-0 fw-bold p-1'>50%</p>
+                            <p className='text-success m-0 fw-bold p-1'>50% off</p>
                           </span>
                           <span className="badge bg-light position-absolute bottom-0 end-0 m-2">
-                            <small className='text-primary fw-semibold opacity-50'><MdOutlineTimer /> <span className='align-text-bottom'>1d</span></small>
+                            <small className='text-primary fw-semibold opacity-50'><MdOutlineTimer size={20} /> <span className='align-text-bottom'>1d</span></small>
                           </span>
                         </div>
                       </a>
