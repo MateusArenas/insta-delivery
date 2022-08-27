@@ -141,7 +141,7 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
                 </div>
                 <div className="card-footer bg-transparent border-0">
                   <small className='opacity-50'>59 minutes ago</small>
-                  <small className='text-primary fw-semibold float-end'><MdOutlineTimer size={20} /> <span className='align-text-top'>1d</span></small>
+                  <small className='text-primary fw-semibold opacity-50 float-end'><MdOutlineTimer size={20} /> <span className='align-text-top'>1d</span></small>
                 </div>
             </div>
 
@@ -218,7 +218,7 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
                     <p className='text-success m-0 fw-bold p-1'>50% off</p>
                   </span>
                   <span className="badge bg-light position-absolute bottom-0 end-0 m-2">
-                    <small className='text-primary fw-semibold'><MdOutlineTimer size={20} /> <span className='align-text-bottom'>1d</span></small>
+                    <small className='text-primary fw-semibold opacity-50'><MdOutlineTimer size={20} /> <span className='align-text-bottom'>1d</span></small>
                   </span>
                 </div>
               </a>
