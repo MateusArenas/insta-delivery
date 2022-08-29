@@ -25,19 +25,23 @@ const SignUp: NextPage<any> = ({ presentation }) => {
       </Head>
 
       {!presentation && (
-        <Button variant='light' className='position-absolute d-lg-none start-0 top-0 m-3 rounded-circle px-2 border-2 text-dark border' 
+        <Button variant='light' className='position-absolute d-lg-none start-0 top-0 m-3 rounded-circle px-2 text-dark' 
           onClick={() => router.back()} style={{ zIndex: 1 }}
         >
           <MdArrowBackIosNew style={{ marginLeft: -2 }} size={24} />
         </Button>
       )}
 
+      <div className="row g-0 my-4 align-items-center justify-content-center">
+        <Image alt='stoored' src='/icon.png' width={64}  height={64} />
+      </div>
+
       <div className="row align-items-center justify-content-center mt-0 mt-lg-3">
 
         <div className="col-11 col-md-7 col-lg-5">
           <div className="card">
             <div className="card-header text-center p-3">
-              <h1 className='fs-4 mb-0'>Sign up to insta-delivery</h1>
+              <h1 className='fs-4 mb-0'>Sign up to Stoored</h1>
             </div>
             <div className="card-body">
               <form>
