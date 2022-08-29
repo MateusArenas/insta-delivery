@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import Router from 'next/router'
+import Image from 'next/image'
 import React from 'react'
 import { Button, Container, Dropdown, Form, FormControlProps, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { IoBagOutline, IoEnterOutline } from 'react-icons/io5';
@@ -25,8 +26,8 @@ function HeaderDesktopOnly(props: any) {
     <Navbar style={{ zIndex: 3 }} sticky='top' bg='light' className='border-bottom d-none d-lg-block align-items-center header-height' collapseOnSelect expand="md">
       <Container className='h-100'>
           <Link passHref href='/' replace >
-            <Navbar.Brand className='me-0' onClick={() => setSearch('')} >
-              insta-delivery
+            <Navbar.Brand className='d-flex align-items-center me-0' onClick={() => setSearch('')} >
+              <Image alt='stoored' src='/logo.png' width={798/7}  height={176/7} />
             </Navbar.Brand>
           </Link> 
           <NavDropdown className='not-arrow mx-2' title={<MdExpandMore className='opacity-75' size={16} />}  id="collasible-nav-dropdown">

@@ -38,8 +38,8 @@ const Home: NextPage = () => {
         <Container className='h-100 align-items-center justify-content-start position-relative'>
 
           <NavDropdown className='not-arrow mx-2' title={
-              <Navbar.Brand as="div" className='me-0' >
-                <span className='me-1'>insta-delivery</span>
+              <Navbar.Brand as="div" className='d-flex align-items-center me-1' >
+                  <Image alt='stoored' src='/logo.png' width={798/7}  height={176/7} />
                 <MdExpandMore className='opacity-75' size={16} />
               </Navbar.Brand>
           }  id="collasible-nav-dropdown">

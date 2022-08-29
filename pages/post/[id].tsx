@@ -140,7 +140,7 @@ const Post: NextPage<any> = ({ _id, vertical, home, component, className }) => {
                   <p className="card-text text-muted mx-3">Oferta de <span className='fw-semibold text-success'>50%</span> em qualquer produto acima.</p>
                 </div>
                 <div className="card-footer bg-transparent border-0">
-                  <small className='fw-semibold opacity-50'><span className='text-primary'><MdOutlineTimer size={20} /> <span className='align-text-top'>1d</span></span> <span className='align-text-top'>• 59 minutes ago</span></small>
+                  <small className='fw-semibold opacity-50'><span className='text-dark'><MdOutlineTimer size={20} /> <span className='align-text-top'>•</span></span> <span className='align-text-top'> 59 minutes ago</span></small>
                 </div>
             </div>
 
